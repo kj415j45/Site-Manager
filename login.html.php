@@ -51,19 +51,19 @@
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
                             <input type="text" class="form-control" id="username" placeholder="用户名">
                             </div>
-                      </div>
-                      <div class="form-group col-sm-12">
+                        </div>
+                        <div class="form-group col-sm-12">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
                             <input type="password" class="form-control" id="password" placeholder="密码">
                             </div>
-                      </div>
-                      <div class="form-group col-sm-12">
-                          <input type="hidden" name="md5password" id="md5password">
-                          <input type="hidden" name="method" id="method">
-                          <button type="submit" onClick="login()" class="btn btn-default btn-block">登录</button>
-                          <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
-                      </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <input type="hidden" name="md5password" id="md5password">
+                            <input type="hidden" name="method" id="method">
+                            <button type="submit" onClick="login()" class="btn btn-default btn-block">登录</button>
+                            <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
+                        </div>
                     </form>
                   </div>
             </div>
