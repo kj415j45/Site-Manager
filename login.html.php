@@ -36,7 +36,7 @@
   </head>
   <body>
     
-    <?php require "header.php" ?>
+    <?php require "include/header.html.php" ?>
     
     <div class="container">
         <div style="margin-left:auto;margin-right:auto;margin-top:120px;width:400px">
@@ -70,7 +70,7 @@
         </div>
     </div>
     
-    <?php require "footer.php" ?>
+    <?php require "include/footer.html.php" ?>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
