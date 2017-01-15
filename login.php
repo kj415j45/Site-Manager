@@ -2,7 +2,7 @@
     require_once "include/sql_connect.php";
     require "include/public_function.php";
     session_start();
-    
+    $login_page=true;
     /**
      * 如果方式是POST就处理登录数据
      */
@@ -54,7 +54,7 @@
             require_once "login.html.php";
         }
     }else if($_GET["action"]=="logout"){//操作是退出
-        unset($_SESSION["username"]);
+        unset($_SESSION["username"]);//移除session
         unset($_SESSION["usergroup"]);
         js_message("您已退出");
         page_jump($site_host."/index.php");
