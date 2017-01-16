@@ -47,7 +47,6 @@
      */
     if(!isset($_GET["action"])||$_GET["action"]=="login"){//没有写操作或者操作是登录
         if(isset($_SESSION["username"])){//已经登录
-            js_message("您已登录,请不要重复登录");
             page_jump($site_host."index.php",0);
         }else{//输出登录界面
 			$login_page=true;
