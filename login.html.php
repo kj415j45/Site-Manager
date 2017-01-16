@@ -1,4 +1,4 @@
-<?php require_once "include/config.php"?>
+<?php require_once "include/config.php"; ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
@@ -11,21 +11,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
     <link href="css/style.css" rel="stylesheet">
-    
-    <script src="js/md5.js">
-        function login(){
-            document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
-            document.getElementById("method").value="login";
-            document.getElementById("password").disabled=true;
-            document.login_form.submit();
-        }
-        function regist(){
-            document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
-            document.getElementById("method").value="regist";
-            document.getElementById("password").disabled=true;
-            document.login_form.submit();
-        }
-    </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,20 +21,20 @@
   </head>
   <body>
     
-    <?php require "include/header.html.php" ?>
+    <?php require "include/header.html.php"; ?>
     
     <div class="container">
         <div style="margin-left:auto;margin-right:auto;margin-top:120px;width:400px">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><?php echo $site_name ?>-登录</h4>
+                    <h4><?php echo $site_name; ?>-登录</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" name="login_form" onsubmit="return false;" method="post" action="login.php" role="form">
+                    <form class="form-horizontal" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>login.php" role="form">
                       <div class="form-group col-sm-12">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                            <input type="text" class="form-control" id="username" placeholder="用户名">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
                             </div>
                         </div>
                         <div class="form-group col-sm-12">
@@ -70,11 +55,26 @@
         </div>
     </div>
     
-    <?php require "include/footer.html.php" ?>
+    <?php require "include/footer.html.php"; ?>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/md5.js"></script>
+    <script language="javascript">
+        function login(){
+            document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
+            document.getElementById("method").value="login";
+            document.getElementById("password").disabled=true;
+            document.login_form.submit();
+        }
+        function regist(){
+            document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
+            document.getElementById("method").value="regist";
+            document.getElementById("password").disabled=true;
+            document.login_form.submit();
+        }
+    </script>
   </body>
 </html>
