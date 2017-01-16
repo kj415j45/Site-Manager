@@ -31,10 +31,12 @@
                 if(!$u_name_flag){
                     js_message("用户名不合法");
                     page_jump($site_host."login.php",0);
+					exit 0;
                 }
                 if(preg_match("/[a-z0-9]{32}/",$_POST["password"])){
                     js_message("密码在传输过程中遭到修改!");
                     page_jump($site_host."login.php",0);
+					exit 0;
                 }
                 SQL::query("INSERT users(username,password,usergroup,regist_time,last_time) VALUES('".$_POST["username"]."','".$_POST["md5password"]."','user','".date("YmdHis",time())."','".date("YmdHis",time())."')");
                 if(SQL::getResult()){//如果插入成功
