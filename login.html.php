@@ -24,9 +24,10 @@
     <?php require "include/header.html.php"; ?>
     
     <div class="container">
-        <div style="margin-left:auto;margin-right:auto;margin-top:120px;width:400px">
+        <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4 center-block" style="float:none;">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading text-center">
                     <h4><?php echo $site_name; ?>-登录</h4>
                 </div>
                 <div class="panel-body">
@@ -51,6 +52,7 @@
                         </div>
                     </form>
                   </div>
+            </div>
             </div>
         </div>
     </div>
