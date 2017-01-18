@@ -25,23 +25,8 @@
     <script src="js/bootstrap.min.js"></script>
 	<!-- 导入md5加密 -->
     <script src="js/md5.min.js"></script>
-	<!-- 导入输入校验 -->
-	<script src="js/login_check.js"></script>
-	<!-- 登录/注册函数 -->
-    <script language="javascript">
-        function login(){
-            document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
-            document.getElementById("method").value="login";
-            document.getElementById("password").disabled=true;
-            document.login_form.submit();
-        }
-        function regist(){
-            document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
-            document.getElementById("method").value="regist";
-            document.getElementById("password").disabled=true;
-            document.login_form.submit();
-        }
-    </script>
+	<!-- 导入登录/注册函数 -->
+	<script src="js/login.min.js"></script>
   </head>
   <body>
     <!-- 头部开始 -->
@@ -49,6 +34,11 @@
 	<!-- 头部结束 -->
     <!-- 主容器开始 -->
     <div class="container">
+		<!-- 提醒开始 -->
+		<div class="row" id="notice">
+			
+		</div>
+		<!--提醒结束-->
         <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-4 center-block" style="float:none;">
             <div class="panel panel-default">
@@ -61,14 +51,14 @@
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
                             <input type="text" class="form-control" id="username" name="username" placeholder="用户名" onblur="username_check()">
-							<span class="help-block">用户名必须字母开头，字母数字下划线组成，4-16个字符</span>
+							<!--<span class="help-block">用户名必须字母开头，字母数字下划线组成，4-16个字符</span>-->
                             </div>
                         </div>
                         <div class="form-group col-sm-12" id="u_p">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
                             <input type="password" class="form-control" id="password" placeholder="密码" onblur="password_check()">
-							<span class="help-block">密码长度限制为6-16位,且不能为纯字母或数字</span>
+							<!--<span class="help-block">密码长度限制为6-16位,且不能为纯字母或数字</span>-->
 							</div>
                         </div>
                         <div class="form-group col-sm-12">
