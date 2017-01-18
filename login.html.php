@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $site_name ?>-登录</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
     <link href="css/style.css" rel="stylesheet">
@@ -18,52 +18,14 @@
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    
-    <?php require "include/header.html.php"; ?>
-    
-    <div class="container">
-        <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-4 center-block" style="float:none;">
-            <div class="panel panel-default">
-                <div class="panel-heading text-center">
-                    <h4><?php echo $site_name; ?>-登录</h4>
-                </div>
-                <div class="panel-body">
-                    <form class="form-horizontal" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>login.php" role="form">
-                      <div class="form-group col-sm-12">
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-12">
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                            <input type="password" class="form-control" id="password" placeholder="密码">
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <input type="hidden" name="md5password" id="md5password">
-                            <input type="hidden" name="method" id="method">
-                            <button type="submit" onClick="login()" class="btn btn-default btn-block">登录</button>
-                            <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
-                        </div>
-                    </form>
-                  </div>
-            </div>
-            </div>
-        </div>
-    </div>
-    
-    <?php require "include/footer.html.php"; ?>
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	
+	<!-- 导入jQuery(Bootstrap所需前置及jQ插件所需依赖) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 导入Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/md5.js"></script>
+	<!-- 导入md5加密 -->
+    <script src="js/md5.min.js"></script>
+	<!-- 登录/注册函数 -->
     <script language="javascript">
         function login(){
             document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
@@ -78,5 +40,48 @@
             document.login_form.submit();
         }
     </script>
+  </head>
+  <body>
+    <!-- 头部开始 -->
+    <?php require "include/header.html.php"; ?>
+	<!-- 头部结束 -->
+    <!-- 主容器开始 -->
+    <div class="container">
+        <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-4 center-block" style="float:none;">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4><?php echo $site_name; ?>-登录</h4>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="login_form" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>login.php" role="form">
+                        <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                            <input type="password" class="form-control" id="password" placeholder="密码">
+							</div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <input type="hidden" name="md5password" id="md5password">
+                            <input type="hidden" name="method" id="method">
+                            <button type="submit" onClick="login()" class="btn btn-default btn-block">登录</button>
+                            <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+	<!-- 主容器结束 -->
+    <!-- 底部开始 -->
+    <?php require "include/footer.html.php"; ?>
+    <!-- 底部结束 -->
   </body>
 </html>
