@@ -50,14 +50,14 @@
                         <div class="form-group col-sm-12" id="u_n">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="用户名" onblur="username_check()">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="用户名"">
 							<!--<span class="help-block">用户名必须字母开头，字母数字下划线组成，4-16个字符</span>-->
                         </div>
                         </div>
                         <div class="form-group col-sm-12" id="u_p">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                            <input type="password" class="form-control" id="password" placeholder="密码" onblur="password_check()">
+                            <input type="password" class="form-control" id="password" placeholder="密码">
 							<!--<span class="help-block">密码长度限制为6-16位,且不能为纯字母或数字</span>-->
 						</div>
                         </div>
