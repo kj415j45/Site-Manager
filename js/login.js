@@ -3,13 +3,34 @@ function username_check(){
 	$("#u_n").removeClass("has-error");
 	$("#notice").empty();
 	var check_username=new RegExp("[a-zA-Z]\\w{3,15}");
+	if($("#username").val().length==0){
+		$("#u_n").addClass("has-error");
+		$("#notice").append('<div class="alert alert-danger text-center" role="alert">用户名不能为空</div>');
+		return false;
+	}
 	if($("#username").val().match(check_username)!=$("#username").val()){
 		$("#u_n").addClass("has-error");
 		$("#notice").append('<div class="alert alert-danger text-center" role="alert">用户名必须字母开头，字母数字下划线组成，4-16个字符</div>');
 		return false;
 	}
-	$("#u_n").addClass("has-success");
-	return true;
+	var xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function(){
+	    if(xmlhttp.readyState==4&&xmlhttp.status==200){
+			if(xmlhttp.responseText==$("#username").val()){
+				$("#u_n").removeClass("has-success");
+				$("#u_n").removeClass("has-error");
+				$("#notice").empty();
+				$("#u_n").addClass("has-error");
+				$("#notice").append('<div class="alert alert-danger text-center" role="alert">用户名已存在</div>');
+				return false;
+			}else{
+				$("#u_n").addClass("has-success");
+				return true;
+			}
+	    }
+	}
+	xmlhttp.open("GET","regist.php?check_username="+$("#username").val(),true);
+	xmlhttp.send();
 }
 function password_check(){
 	$("#u_p").removeClass("has-success");
