@@ -26,7 +26,7 @@
 	<!-- 导入md5加密 -->
     <script src="js/md5.min.js"></script>
 	<!-- 导入登录/注册函数 -->
-	<script src="js/login.min.js"></script>
+	<script src="js/login.js"></script>
   </head>
   <body>
     <!-- 头部开始 -->

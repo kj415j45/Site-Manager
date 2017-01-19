@@ -3,23 +3,6 @@
     require "include/public_function.php";
     session_start();
 
-    /**
-     * 如果方式是GET就要求登录
-     */
-    if(!isset($_GET["action"])||$_GET["action"]=="login"){//没有写操作或者操作是登录
-        if(isset($_SESSION["username"])){//已经登录
-            page_jump($site_host."index.php",0);
-        }else{//输出登录界面
-            $login_page=true;
-            require_once "login.html.php";
-        }
-    }else if($_GET["action"]=="logout"){//操作是退出
-        unset($_SESSION["username"]);//移除session
-        unset($_SESSION["usergroup"]);
-        js_message("您已退出");
-        page_jump($site_host."index.php",0);
-    }
-	
 	/**
      * 如果方式是POST就处理登录数据
      */
@@ -38,5 +21,22 @@
             js_message("欢迎回来,".$_SESSION["usergroup"].$_SESSION["username"]);
             page_jump($site_host."index.php",0);
         }
+    }
+	
+	/**
+     * 如果方式是GET就要求登录
+     */
+    if(!isset($_GET["action"])||$_GET["action"]=="login"){//没有写操作或者操作是登录
+        if(isset($_SESSION["username"])){//已经登录
+            page_jump($site_host."index.php",0);
+        }else{//输出登录界面
+            $login_page=true;
+            require_once "login.html.php";
+        }
+    }else if($_GET["action"]=="logout"){//操作是退出
+        unset($_SESSION["username"]);//移除session
+        unset($_SESSION["usergroup"]);
+        js_message("您已退出");
+        page_jump($site_host."index.php",0);
     }
 ?>
