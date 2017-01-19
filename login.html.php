@@ -63,9 +63,8 @@
                         </div>
                         <div class="form-group col-sm-12">
                             <input type="hidden" name="md5password" id="md5password">
-                            <input type="hidden" name="method" id="method">
                             <button type="submit" onClick="login()" class="btn btn-default btn-block">登录</button>
-                            <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
+                            <button type="submit" onClick="window.location.href='regist.php'" class="btn btn-primary btn-block">注册</button>
                         </div>
                     </form>
                 </div>
