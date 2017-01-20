@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                    <h1>活动列表</h1>
+                    <h1 class="page-header">活动列表</h1>
                     <table class="table table-condensed table-striped">
                         <tbody>
                             <tr>
@@ -32,7 +32,7 @@
                             </tr>
                             <tr>
                                 <td>1</td>
-                                <td><a href="index.php">膜法师大会</a></td>
+                                <td><a href="activity.php">膜法师大会</a></td>
                                 <td>江泽民</td>
                                 <td>我今天作为一个长者在这里...</td>
                                 <td>2017-01-27</td>
