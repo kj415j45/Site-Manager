@@ -6,12 +6,14 @@ function username_check(){
 	if($("#username").val().length==0){
 		$("#u_n").addClass("has-error");
 		$("#notice").append('<div class="alert alert-danger text-center" role="alert">用户名不能为空</div>');
-		return false;
+		$("#u_n_c").val("false");
+		return;
 	}
 	if($("#username").val().match(check_username)!=$("#username").val()){
 		$("#u_n").addClass("has-error");
 		$("#notice").append('<div class="alert alert-danger text-center" role="alert">用户名必须字母开头，字母数字下划线组成，4-16个字符</div>');
-		return false;
+		$("#u_n_c").val("false");
+		return;
 	}
 	var xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
@@ -22,10 +24,12 @@ function username_check(){
 				$("#notice").empty();
 				$("#u_n").addClass("has-error");
 				$("#notice").append('<div class="alert alert-danger text-center" role="alert">用户名已存在</div>');
-				return false;
+				$("#u_n_c").val("false");
+				return;
 			}else{
 				$("#u_n").addClass("has-success");
-				return true;
+				$("#u_n_c").val("true");
+				return;
 			}
 	    }
 	}
@@ -41,24 +45,28 @@ function password_check(){
 	if($("#password").val().length<6||$("#password").val().length>16){
 		$("#u_p").addClass("has-error");
 		$("#notice").append('<div class="alert alert-danger text-center" role="alert">密码长度限制为6-16位</div>');
-		return false;
+		$("#u_p_c").val("false");
+		return;
 	}
 	if($("#password").val().match(check_password_easy_number)==$("#password").val()){
 		$("#u_p").addClass("has-error");
 		$("#notice").append('<div class="alert alert-danger text-center" role="alert">密码不应为纯数字</div>');
-		return false;
+		$("#u_p_c").val("false");
+		return;
 	}else if($("#password").val().match(check_password_easy_letter)==$("#password").val()){
 		$("#u_p").addClass("has-error");
 		$("#notice").append('<div class="alert alert-danger text-center" role="alert">密码不应为纯字母</div>');
-		return false;
+		$("#u_p_c").val("false");
+		return;
 	}
 	$("#u_p").addClass("has-success");
-	return true;
+	$("#u_p_c").val("true");
 }
 function confirm_password_check(){
-	if(!password_check()){
+	if($("#u_p_c").val()=="false"){
 		$("#c_u_p").addClass("has-error");
-		return false;
+		$("#c_u_p_c").val("false");
+		return;
 	}
 	$("#c_u_p").removeClass("has-success");
 	$("#c_u_p").removeClass("has-error");
@@ -66,10 +74,11 @@ function confirm_password_check(){
 	if($("#confirm_password").val()!=$("#password").val()){
 		$("#c_u_p").addClass("has-error");
 		$("#notice").append('<div class="alert alert-danger text-center" role="alert">两次输入的密码不相同</div>');
-		return false;
+		$("#c_u_p_c").val("false");
+		return;
 	}
 	$("#c_u_p").addClass("has-success");
-	return true;
+	$("#c_u_p_c").val("true");
 }
 function login(){
 	$("#notice").empty();
@@ -81,7 +90,7 @@ function login(){
 function regist(){
 	$("#notice").empty();
 	$("#notice").append('<div class="alert alert-info text-center" role="alert">注册中...</div>');
-	if(username_check()&&password_check()&&confirm_password_check()){
+	if($("#u_n_c").val()=="true"&&$("#u_p_c").val()=="true"&&$("#c_u_p_c").val()=="true"){
 		document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
 		document.getElementById("password").disabled=true;
 		document.login_form.submit();

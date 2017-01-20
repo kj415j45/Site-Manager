@@ -11,6 +11,22 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- 导入jQuery(Bootstrap所需前置及jQ插件所需依赖) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 导入Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+	<!-- 导入md5加密 -->
+    <script src="js/md5.min.js"></script>
+	<!-- 导入登录/注册函数 -->
+	<script src="js/login.js"></script>
   </head>
   <body>
     <!-- 头部开始 -->
@@ -30,7 +46,7 @@
                     <h4><?php echo $site_name; ?>-注册</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" id="login_form" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>login.php" role="form">
+                    <form class="form-horizontal" id="login_form" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>regist.php" role="form">
                         <div class="form-group col-sm-12" id="u_n">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
@@ -52,9 +68,12 @@
 						</div>
 						</div>
                         <div class="form-group col-sm-12">
-                            <input type="hidden" name="md5password" id="md5password">
                             <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
                         </div>
+						<input type="hidden" name="md5password" id="md5password">
+						<input type="hidden" id="u_n_c" value="false">
+						<input type="hidden" id="u_p_c" value="false">
+						<input type="hidden" id="c_u_p_c" value="false">
                     </form>
                 </div>
             </div>
@@ -65,20 +84,5 @@
     <!-- 底部开始 -->
     <?php require "include/footer.html.php"; ?>
     <!-- 底部结束 -->
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	
-	<!-- 导入jQuery(Bootstrap所需前置及jQ插件所需依赖) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- 导入Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-	<!-- 导入md5加密 -->
-    <script src="js/md5.min.js"></script>
-	<!-- 导入登录/注册函数 -->
-	<script src="js/login.js"></script>
   </body>
 </html>
