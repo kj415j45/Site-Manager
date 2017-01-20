@@ -18,10 +18,9 @@
 	<!-- 头部结束 -->
 	<!-- 主容器开始 -->
     <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                233
-                </div>
+        <div class="row">
+            <div class="col-md-12">
+                 233
             </div>
         </div>
     </div>
