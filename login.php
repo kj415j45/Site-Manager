@@ -24,18 +24,23 @@
 		}
         SQL::query("SELECT password,usergroup FROM users WHERE username='".$_POST["username"]."'");
         $assoc=mysqli_fetch_assoc(SQL::getResult());
-        if($assoc["password"]!=$_POST["md5password"]){//如果密码错误
-            js_message("密码错误");
-            page_jump($site_host."login.php",0);
-        }else{
-            $_SESSION["username"]=$_POST["username"];//设置session
-            $_SESSION["usergroup"]=$assoc["usergroup"]=="admin"?"管理员":"用户";
-            
-            SQL::query("UPDATE users SET last_time='".date("YmdHis",time())."' WHERE username='".$_POST["username"]."'");//更新最后上线时间
-            
-            js_message("欢迎回来,".$_SESSION["usergroup"].$_SESSION["username"]);
-            page_jump($site_host."index.php",0);
-        }
+		if($assoc!=null){
+			if($assoc["password"]!=$_POST["md5password"]){//如果密码错误
+				js_message("密码错误");
+				page_jump($site_host."login.php",0);
+			}else{
+				$_SESSION["username"]=$_POST["username"];//设置session
+				$_SESSION["usergroup"]=$assoc["usergroup"]=="admin"?"管理员":"用户";
+				
+				SQL::query("UPDATE users SET last_time='".date("YmdHis",time())."' WHERE username='".$_POST["username"]."'");//更新最后上线时间
+				
+				js_message("欢迎回来,".$_SESSION["usergroup"].$_SESSION["username"]);
+				page_jump($site_host."index.php",0);
+			}
+		}else{
+			js_message("用户名不存在");
+			page_jump($site_host."login.php",0);
+		}
     }
 	
 	/**
