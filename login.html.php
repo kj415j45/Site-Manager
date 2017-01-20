@@ -26,7 +26,7 @@
 	<!-- 导入md5加密 -->
     <script src="js/md5.min.js"></script>
 	<!-- 导入登录/注册函数 -->
-	<script src="js/login.min.js"></script>
+	<script src="js/login.js"></script>
   </head>
   <body>
     <!-- 头部开始 -->
@@ -50,22 +50,21 @@
                         <div class="form-group col-sm-12" id="u_n">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="用户名" onblur="username_check()">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="用户名"">
 							<!--<span class="help-block">用户名必须字母开头，字母数字下划线组成，4-16个字符</span>-->
-                            </div>
+                        </div>
                         </div>
                         <div class="form-group col-sm-12" id="u_p">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                            <input type="password" class="form-control" id="password" placeholder="密码" onblur="password_check()">
+                            <input type="password" class="form-control" id="password" placeholder="密码">
 							<!--<span class="help-block">密码长度限制为6-16位,且不能为纯字母或数字</span>-->
-							</div>
+						</div>
                         </div>
                         <div class="form-group col-sm-12">
                             <input type="hidden" name="md5password" id="md5password">
-                            <input type="hidden" name="method" id="method">
                             <button type="submit" onClick="login()" class="btn btn-default btn-block">登录</button>
-                            <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
+                            <button type="submit" onClick="window.location.href='regist.php'" class="btn btn-primary btn-block">注册</button>
                         </div>
                     </form>
                 </div>

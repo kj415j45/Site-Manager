@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $site_name ?></title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
     <link href="css/style.css" rel="stylesheet">
@@ -18,11 +18,17 @@
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	
+	<!-- 导入jQuery(Bootstrap所需前置及jQ插件所需依赖) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 导入Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
-    
-    <?php require "include/header.html.php" ?>
-    
+    <!-- 头部开始 -->
+    <?php require "include/header.html.php"; ?>
+	<!-- 头部结束 -->
+	<!-- 主容器开始 -->
     <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -31,13 +37,9 @@
             </div>
         </div>
     </div>
-    
+    <!-- 主容器结束 -->
+    <!-- 底部开始 -->
     <?php require "include/footer.html.php" ?>
-    
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- 底部结束 -->
   </body>
 </html>
