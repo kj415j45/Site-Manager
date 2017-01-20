@@ -56,6 +56,10 @@ function password_check(){
 	return true;
 }
 function confirm_password_check(){
+	if(!password_check()){
+		$("#c_u_p").addClass("has-error");
+		return false;
+	}
 	$("#c_u_p").removeClass("has-success");
 	$("#c_u_p").removeClass("has-error");
 	$("#notice").empty();
