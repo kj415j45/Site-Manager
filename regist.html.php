@@ -46,7 +46,7 @@
                     <h4><?php echo $site_name; ?>-注册</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" id="login_form" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>login.php" role="form">
+                    <form class="form-horizontal" id="login_form" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>regist.php" role="form">
                         <div class="form-group col-sm-12" id="u_n">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
@@ -68,9 +68,12 @@
 						</div>
 						</div>
                         <div class="form-group col-sm-12">
-                            <input type="hidden" name="md5password" id="md5password">
                             <button type="submit" onClick="regist()" class="btn btn-primary btn-block">注册</button>
                         </div>
+						<input type="hidden" name="md5password" id="md5password">
+						<input type="hidden" id="u_n_c" value="false">
+						<input type="hidden" id="u_p_c" value="false">
+						<input type="hidden" id="c_u_p_c" value="false">
                     </form>
                 </div>
             </div>

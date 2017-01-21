@@ -7,7 +7,7 @@
 		SQL::query("SELECT password,usergroup FROM users WHERE username='".$_POST["username"]."'");
 		$assoc=mysqli_fetch_assoc(SQL::getResult());
 		if($assoc==null){
-			if(preg_match("/[a-zA-Z]\w{3,15}/",$_POST["username"],$match)){
+			if(preg_match("/[a-zA-Z]\\w{3,15}/",$_POST["username"],$match)){
 				if(strcmp($match[0],$_POST["username"])==0){
 				   $u_name_flag=true;
 				}
@@ -17,7 +17,7 @@
 				page_jump($site_host."regist.php",0);
 				exit(0);
 			}
-			if(preg_match("/[a-z0-9]{32}/",$_POST["md5password"])){
+			if(!preg_match("/[a-z0-9]{32}/",$_POST["md5password"])){
 				js_message("密码在传输过程中遭到修改!");
 				page_jump($site_host."regist.php",0);
 				exit(0);

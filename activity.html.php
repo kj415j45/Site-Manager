@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                 233
+                <h1 class="page-header">活动:</h1>
             </div>
         </div>
     </div>

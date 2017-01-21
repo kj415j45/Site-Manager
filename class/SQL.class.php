@@ -55,6 +55,7 @@ final class SQL{
      * @param string $query 要执行的语句
      */
     public static function query($query){
+		self::$result=null;
         self::$result=mysqli_query(self::$connection,$query);
     }
     

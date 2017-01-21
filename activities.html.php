@@ -20,7 +20,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                 233
+                    <h1 class="page-header">活动列表</h1>
+                    <table class="table table-condensed table-striped">
+                        <tbody>
+                            <tr>
+                                <td>ID</td>
+                                <td>活动名称</td>
+                                <td>发起人</td>
+                                <td>活动简介</td>
+                                <td>开始时间</td>
+                            </tr>
+							<?php $get_activities=true; require "include/get_activity.php"; ?>
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>
