@@ -30,13 +30,7 @@
                                 <td>活动简介</td>
                                 <td>开始时间</td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><a href="activity.php">膜法师大会</a></td>
-                                <td>江泽民</td>
-                                <td>我今天作为一个长者在这里...</td>
-                                <td>2017-01-27</td>
-                            </tr>
+							<?php $get_activities=true; require "include/get_activity.php"; ?>
                         </tbody>
                     </table>
             </div>
