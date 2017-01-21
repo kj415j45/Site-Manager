@@ -18,7 +18,6 @@
 			exit(0);
 		}
 		if(!preg_match("/[a-z0-9]{32}/",$_POST["md5password"])){
-			echo $_POST["md5password"];
 			js_message("密码在传输过程中遭到修改!");
 			page_jump($site_host."login.php",0);
 			exit(0);
