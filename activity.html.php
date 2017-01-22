@@ -17,10 +17,10 @@
     <?php require "include/header.html.php"; ?>
 	<!-- 头部结束 -->
 	<!-- 主容器开始 -->
-    <div class="container">
+	<div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-header">活动:</h1>
+				<?php require "include/get_activity.php"; ?>
             </div>
         </div>
     </div>

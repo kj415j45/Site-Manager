@@ -1,6 +1,6 @@
 <?php
 	require_once "include/sql_connect.php";
-	require "include/public_function.php";
+	require_once "include/public_function.php";
 	session_start();
 	
 	if(isset($_POST["username"])){
