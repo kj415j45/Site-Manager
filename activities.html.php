@@ -30,7 +30,16 @@
                                 <td>活动简介</td>
                                 <td>开始时间</td>
                             </tr>
-							<?php $get_activities=true; require "include/get_activity.php"; ?>
+							<?php
+								if(isset($_GET["id"])){
+									$get_activity_id=$_GET["id"];
+								}else if(isset($_GET["user"])){
+									$get_user_activities=$_GET["user"];
+								}else{
+									$get_activities=true;
+								}
+								require "include/get_activity.php";
+							?>
                         </tbody>
                     </table>
             </div>

@@ -20,21 +20,7 @@
 	<div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-header">活动:膜法师大会<small><span class="label label-warning">即将开始</span><span class="label label-success">正在进行</span><span class="label label-default">已结束</span></small></h1>
-					<ul class="list-inline">
-						<li><big><span class="label label-info">发起人:长者</span></big></li>
-						<li><big><span class="label label-warning">开始时间:2017-01-22 11:59:59</span></big></li>
-						<li><big><span class="label label-success">结束时间:2017-01-22 11:59:60</span></big></li>
-						<li><big><span class="label label-info">活动场地:新闻发布会</span></big></li>
-					</ul>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						详细介绍
-					</div>
-					<div class="panel-body">
-						今天我作为一个长者在这里，有必要跟你们讲讲人生的经验
-					</div>
-				</div>
+				<?php require "include/get_activity.php"; ?>
             </div>
         </div>
     </div>
