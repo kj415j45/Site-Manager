@@ -17,7 +17,11 @@
 		}else{
 			echo '<span class="label label-success">正在进行</span>';
 		}
-		echo '</small></h1>';
+		echo '</small>';
+		if($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员"){
+			echo '<a class="btn btn-primary col-md-offset-8" href="editactivity.php">编辑</a>';
+		}
+		echo '</h1>';
 		echo '<ul class="list-inline">';
 		echo '<li><big><span class="label label-info">发起人:'.$assoc["username"].'</span></big></li>';
 		echo '<li><big><span class="label label-warning">开始时间:'.$assoc["start_time"].'</span></big></li>';
