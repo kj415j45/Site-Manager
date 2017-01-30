@@ -19,7 +19,7 @@
 		}
 		echo '</small>';
 		if($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员"){
-			echo '<a class="btn btn-primary col-md-offset-8" href="editactivity.php">编辑</a>';
+			echo '<a class="btn btn-primary col-md-offset-8" href="edit_activity.php?id='.$_GET["id"].'">编辑</a>';
 		}
 		echo '</h1>';
 		echo '<ul class="list-inline">';
