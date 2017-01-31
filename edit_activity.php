@@ -1,4 +1,4 @@
 <?php
 	session_start();
-    require "editactivity.html.php";
+    require "edit_activity.html.php";
 ?>
