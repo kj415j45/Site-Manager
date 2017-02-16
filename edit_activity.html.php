@@ -21,19 +21,18 @@
 	<!-- 主容器开始 -->
     <div class="container">
 		<h1 class="page-header">编辑活动</h1>
-		<form class="form-horizontal" method="post" action="<?php echo $site_host; ?>editactivity.php">
+		<form class="form-horizontal" method="post" action="<?php echo $site_host; ?>edit_activity.php">
 		  <div class="form-group">
 			<label class="col-md-1 control-label">活动名称</label>
 			<div class="col-md-11">
-			  <input type="text" class="form-control" id="activity_name" placeholder="活动名称">
+			  <input type="text" class="form-control" name="activity_name" placeholder="活动名称">
 			</div>
 		  </div>
 		  <div class="form-group">
 			<label class="col-md-1 control-label">活动场地</label>
 				<div class="col-md-3">
-					<select class="form-control">
-						<option>1</option>
-						<option>2</option>
+					<select class="form-control" name="site_name">
+						<?php require "include/get_sites.php"; ?>
 					</select>
 				</div>
 				<label class="col-md-1 control-label">开始时间</label>
@@ -57,7 +56,7 @@
 		  <div class="form-group">
 			<label class="col-md-1 control-label">活动介绍</label>
 			<div class="col-md-11">
-				<textarea class="col-md-6 form-control" rows="10"></textarea>
+				<textarea class="col-md-6 form-control" name="activity_describe" rows="10"></textarea>
 			</div>
 		  </div>
 		  <div class="form-group">
@@ -65,7 +64,7 @@
 			  <button type="submit" class="btn btn-primary col-md-12">提交</button>
 			 </div>
 		  </div>
-		  <input type="hidden" name="activity_id" value="">
+		  <input type="hidden" name="activity_id" value="<?php echo $_GET["id"] ?>">
 		</form>
     </div>
     <!-- 主容器结束 -->
