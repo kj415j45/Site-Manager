@@ -25,7 +25,7 @@
 		  <div class="form-group">
 			<label class="col-md-1 control-label">活动名称</label>
 			<div class="col-md-11">
-			  <input type="text" class="form-control" name="activity_name" placeholder="活动名称">
+			  <input type="text" class="form-control" name="activity_name" placeholder="活动名称" value="<?php echo $activity_name; ?>">
 			</div>
 		  </div>
 		  <div class="form-group">
@@ -38,25 +38,25 @@
 				<label class="col-md-1 control-label">开始时间</label>
 				<div class="col-md-3">
 					<div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii" data-link-field="start_time">
-						<input class="form-control" size="16" type="text" value="" readonly>
+						<input class="form-control" size="16" type="text" value="<?php echo $start_time; ?>" readonly>
 						<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 					</div>
-					<input type="hidden" id="start_time" name="start_time" value="">
+					<input type="hidden" id="start_time" name="start_time" value="<?php echo $start_time; ?>">
 				</div>
 				
 				<label class="col-md-1 control-label">结束时间</label>
 				<div class="col-md-3">
 					<div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii" data-link-field="end_time">
-						<input class="form-control" size="16" type="text" value="" readonly>
+						<input class="form-control" size="16" type="text" value="<?php echo $end_time; ?>" readonly>
 						<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 					</div>
-					<input type="hidden" id="end_time" name="end_time" value="">
+					<input type="hidden" id="end_time" name="end_time" value="<?php echo $end_time; ?>">
 				</div>
 			</div>
 		  <div class="form-group">
 			<label class="col-md-1 control-label">活动介绍</label>
 			<div class="col-md-11">
-				<textarea class="col-md-6 form-control" name="activity_describe" rows="10"></textarea>
+				<textarea class="col-md-6 form-control" name="activity_describe" rows="10"><?php echo $activity_describe; ?></textarea>
 			</div>
 		  </div>
 		  <div class="form-group">
