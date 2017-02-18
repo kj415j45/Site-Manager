@@ -3,6 +3,8 @@
 	require_once __DIR__."/sql_connect.php";
 	require_once __DIR__."/public_function.php";
 	
+	unset($assoc);
+	
 	if(isset($get_activity_id)){
 		SQL::query("SELECT activity_name,username,activity_describe,start_time,end_time,site_name FROM activities,users,sites WHERE activities.author_id = users.id AND site_id = sites.id AND activities.id = ".$get_activity_id);
 		$assoc=mysqli_fetch_assoc(SQL::getResult());
