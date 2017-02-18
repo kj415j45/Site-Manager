@@ -1,7 +1,7 @@
 <?php
+    session_start();
     require_once "include/sql_connect.php";
     require_once "include/public_function.php";
-    session_start();
 
 	/**
      * 如果方式是POST就处理登录数据
