@@ -2,11 +2,13 @@
 	session_start();
 	require_once __DIR__."/sql_connect.php";
 	require_once __DIR__."/public_function.php";
+	require_once __DIR__."/../class/Parsedown.class.php";
 	
 	unset($assoc);
 	
 	if(isset($get_activity_id)){
-		SQL::query("SELECT activity_name,username,activity_describe,start_time,end_time,site_name FROM activities,users,sites WHERE activities.author_id = users.id AND site_id = sites.id AND activities.id = ".$get_activity_id);
+		$Parsedown = new Parsedown();
+		SQL::query("SELECT activity_name,username,activity_describe,activity_note,start_time,end_time,site_name FROM activities,users,sites WHERE activities.author_id = users.id AND site_id = sites.id AND activities.id = ".$get_activity_id);
 		$assoc=mysqli_fetch_assoc(SQL::getResult());
 		$start_time=strtotime($assoc["start_time"]);
 		$end_time=strtotime($assoc["end_time"]);
@@ -20,9 +22,14 @@
 			echo '<span class="label label-success">正在进行</span>';
 		}
 		echo '</small>';
-		if($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员"){
-			echo '<a class="btn btn-primary col-md-offset-8" href="edit_activity.php?id='.$_GET["id"].'">编辑</a>';
+		echo '<div class="col-md-offset-8">';
+		if($_SESSION["username"]!=NULL&&time()<$start_time){
+			echo '<a class="btn btn-success" href="join_activity?id='.$_GET["id"].'">加入</a>';
 		}
+		if($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员"){
+			echo '<a class="btn btn-primary" href="edit_activity.php?id='.$_GET["id"].'">编辑</a>';
+		}
+		echo '</div>';
 		echo '</h1>';
 		echo '<ul class="list-inline">';
 		echo '<li><big><span class="label label-info">发起人:'.$assoc["username"].'</span></big></li>';
@@ -32,8 +39,14 @@
 		echo '</ul>';
 		echo '<div class="panel panel-default">';
 		echo '<div class="panel-heading">详细介绍</div>';
-		echo '<div class="panel-body">'.$assoc["activity_describe"].'</div>';
+		echo '<div class="panel-body">'.$Parsedown->text($assoc["activity_describe"]).'</div>';
 		echo '</div>';
+		if($assoc["activity_note"]!=NULL){
+			echo '<div class="panel panel-default">';
+			echo '<div class="panel-heading">备注</div>';
+			echo '<div class="panel-body">'.$Parsedown->text($assoc["activity_note"]).'</div>';
+			echo '</div>';
+		}
 	}else if(isset($get_user_activities)){
 		SQL::query("SELECT activities.id,activity_name,username,activity_describe,start_time FROM activities,users WHERE author_id=users.id AND username='".$get_user_activities."'");
 		while($row=SQL::getResult()->fetch_assoc()){    
