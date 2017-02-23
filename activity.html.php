@@ -18,11 +18,7 @@
 	<!-- 头部结束 -->
 	<!-- 主容器开始 -->
 	<div class="container">
-        <div class="row">
-            <div class="col-md-12">
-				<?php require "include/get_activity.php"; ?>
-            </div>
-        </div>
+		<?php require "include/get_activity.php"; ?>
     </div>
     <!-- 主容器结束 -->
     <!-- 底部开始 -->
