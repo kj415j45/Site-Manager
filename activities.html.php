@@ -27,7 +27,6 @@
                                 <td>ID</td>
                                 <td>活动名称</td>
                                 <td>发起人</td>
-                                <td>活动简介</td>
                                 <td>开始时间</td>
                             </tr>
 							<?php

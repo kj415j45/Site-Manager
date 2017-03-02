@@ -78,7 +78,6 @@
 			echo "<td>".$assoc["$i"]['id']."</td>";
 			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a></td>";
 			echo "<td>".$assoc["$i"]['username']."</td>";
-			echo "<td>".$assoc["$i"]['activity_describe']."</td>";
 			echo "<td>".$assoc["$i"]['start_time']."</td>";
 			echo "</tr>";
 		}

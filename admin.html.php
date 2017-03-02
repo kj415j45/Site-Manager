@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php"><?=$site_head ?></a>
+				<a class="navbar-brand" href="#"><?=$site_head ?></a>
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="true">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -28,12 +28,10 @@
 			</div>
 			<nav id="bs-navbar" class="navbar-collapse collapse" aria-expanded="true">
 				<ul class="nav navbar-nav">
-					<li><a>管理活动申请</a></li>
-					<li><a>管理用户申请</a></li>
-					<li><a>活动管理</a></li>
-					<li><a>场地管理</a></li>
-					<li><a>用户管理</a></li>
-					<li><a>全局设置</a></li>
+					<li id="button_activities" class="active"><a onClick="show('activities');" href="#">活动管理</a></li>
+					<li id="button_sites"><a onClick="show('sites');" href="#">场地管理</a></li>
+					<li id="button_users"><a onClick="show('users');" href="#">用户管理</a></li>
+					<li id="button_global_setting"><a onClick="show('global_setting');" href="#">全局设置</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.php">回到主页</a></li>
@@ -44,11 +42,10 @@
 	<!-- 头部结束 -->
 	<!-- 主容器开始 -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                 233
-            </div>
-        </div>
+		<?php require "include/admin_activities.html.php" ?>
+		<?php require "include/admin_sites.html.php" ?>
+		<?php require "include/admin_users.html.php" ?>
+		<?php require "include/admin_global_setting.html.php" ?>
     </div>
     <!-- 主容器结束 -->
     <!-- 底部开始 -->
@@ -65,5 +62,20 @@
     <script src="js/jquery.min.js"></script>
     <!-- 导入Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
+	
+	<script>
+		function show(name){
+			$('#admin_activities').addClass('hidden');
+			$('#admin_sites').addClass('hidden');
+			$('#admin_users').addClass('hidden');
+			$('#admin_global_setting').addClass('hidden');
+			$('#button_activities').removeClass('active');
+			$('#button_sites').removeClass('active');
+			$('#button_users').removeClass('active');
+			$('#button_global_setting').removeClass('active');
+			$('#admin_'+name).removeClass('hidden');
+			$('#button_'+name).addClass('active');
+		}
+	</script>
   </body>
 </html>
