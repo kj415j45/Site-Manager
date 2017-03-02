@@ -48,4 +48,3 @@
 			echo $_GET["check_username"];
 		}
 	}
-?>

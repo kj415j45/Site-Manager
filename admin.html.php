@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $site_name ?></title>
+    <title><?=$site_name ?></title>
 
     <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php"><?php echo $site_head ?></a>
+				<a class="navbar-brand" href="index.php"><?=$site_head ?></a>
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="true">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>

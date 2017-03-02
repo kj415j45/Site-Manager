@@ -17,4 +17,3 @@
 		}
 		echo '>'.$assoc[$i]['site_name'].'</option>';
 	}
-?>

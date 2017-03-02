@@ -23,4 +23,3 @@ function show($var){
 	var_dump($var);
 	echo '</pre>';
 }
-?>

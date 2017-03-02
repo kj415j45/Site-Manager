@@ -85,4 +85,3 @@
 	}else{
 		page_jump($site_host."activities.php",0);
 	}
-?>

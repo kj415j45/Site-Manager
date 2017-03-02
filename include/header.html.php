@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.php"><?php echo $site_head ?></a>
+			<a class="navbar-brand" href="index.php"><?=$site_head?></a>
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="true">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>

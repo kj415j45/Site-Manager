@@ -29,4 +29,3 @@
 		$activity_describe=$assoc["activity_describe"];
 	}
     require "edit_activity.html.php";
-?>

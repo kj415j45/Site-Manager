@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        <?php echo $site_name ?>-编辑场地</title>
+        <?=$site_name ?>-编辑场地</title>
     <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <!-- 主容器开始 -->
     <div class="container">
         <h1 class="page-header">编辑场地</h1>
-        <form class="form-horizontal" method="post" action="<?php echo $site_host; ?>test.php">
+        <form class="form-horizontal" method="post" action="<?=$site_host ?>test.php">
             <div class="form-group">
                 <label class="col-md-1 control-label">场地名称</label>
                 <div class="col-md-11">

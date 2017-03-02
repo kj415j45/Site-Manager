@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $site_name ?>-注册</title>
+    <title><?=$site_name ?>-注册</title>
 
     <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,10 +43,10 @@
         <div class="col-xs-12 col-sm-8 col-md-4 center-block" style="float:none;">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <h4><?php echo $site_name; ?>-注册</h4>
+                    <h4><?=$site_name ?>-注册</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" id="login_form" name="login_form" onsubmit="return false;" method="post" action="<?php echo $site_host; ?>regist.php" role="form">
+                    <form class="form-horizontal" id="login_form" name="login_form" onsubmit="return false;" method="post" action="<?=$site_host ?>regist.php" role="form">
                         <div class="form-group col-sm-12" id="u_n">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>

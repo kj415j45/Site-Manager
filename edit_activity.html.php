@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $site_name ?>-编辑活动</title>
+    <title><?=$site_name ?>-编辑活动</title>
 
     <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,11 +21,11 @@
 	<!-- 主容器开始 -->
     <div class="container">
 		<h1 class="page-header">编辑活动</h1>
-		<form class="form-horizontal" method="post" action="<?php echo $site_host; ?>edit_activity.php">
+		<form class="form-horizontal" method="post" action="<?=$site_host ?>edit_activity.php">
 		  <div class="form-group">
 			<label class="col-md-1 control-label">活动名称</label>
 			<div class="col-md-11">
-			  <input type="text" class="form-control" name="activity_name" placeholder="活动名称" value="<?php echo $activity_name; ?>">
+			  <input type="text" class="form-control" name="activity_name" placeholder="活动名称" value="<?=$activity_name ?>">
 			</div>
 		  </div>
 		  <div class="form-group">
@@ -38,25 +38,25 @@
 				<label class="col-md-1 control-label">开始时间</label>
 				<div class="col-md-3">
 					<div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii" data-link-field="start_time">
-						<input class="form-control" size="16" type="text" value="<?php echo $start_time; ?>" readonly>
+						<input class="form-control" size="16" type="text" value="<?=$start_time ?>" readonly>
 						<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 					</div>
-					<input type="hidden" id="start_time" name="start_time" value="<?php echo $start_time; ?>">
+					<input type="hidden" id="start_time" name="start_time" value="<?=$start_time ?>">
 				</div>
 				
 				<label class="col-md-1 control-label">结束时间</label>
 				<div class="col-md-3">
 					<div class="input-group date form_datetime" data-date-format="yyyy-mm-dd hh:ii" data-link-field="end_time">
-						<input class="form-control" size="16" type="text" value="<?php echo $end_time; ?>" readonly>
+						<input class="form-control" size="16" type="text" value="<?=$end_time; ?>" readonly>
 						<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 					</div>
-					<input type="hidden" id="end_time" name="end_time" value="<?php echo $end_time; ?>">
+					<input type="hidden" id="end_time" name="end_time" value="<?=$end_time ?>">
 				</div>
 			</div>
 		  <div class="form-group">
 			<label class="col-md-1 control-label">活动介绍</label>
 			<div class="col-md-11">
-				<textarea class="col-md-6 form-control" name="activity_describe" rows="10"><?php echo $activity_describe; ?></textarea>
+				<textarea class="col-md-6 form-control" name="activity_describe" rows="10"><?=$activity_describe ?></textarea>
 			</div>
 		  </div>
 		  <div class="form-group">
@@ -64,7 +64,7 @@
 			  <button type="submit" class="btn btn-primary col-md-12">提交</button>
 			 </div>
 		  </div>
-		  <input type="hidden" name="activity_id" value="<?php echo $_GET["id"] ?>">
+		  <input type="hidden" name="activity_id" value="<?=$_GET["id"] ?>">
 		</form>
     </div>
     <!-- 主容器结束 -->
