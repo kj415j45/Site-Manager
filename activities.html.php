@@ -24,10 +24,10 @@
                     <table class="table table-condensed table-striped">
                         <tbody>
                             <tr>
-                                <td>ID</td>
+                                <td class="hidden-xs">ID</td>
                                 <td>活动名称</td>
                                 <td>发起人</td>
-                                <td>开始时间</td>
+                                <td class="hidden-xs">开始时间</td>
                             </tr>
 							<?php
 								if(isset($_GET["id"])){
