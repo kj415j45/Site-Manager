@@ -3,7 +3,7 @@
  * sql连接类
  * @author kj415j45
  */
-final class SQL{
+final class SQL{//TODO
     /**
      * sql连接，单例模式
      */
@@ -59,6 +59,35 @@ final class SQL{
         self::$result=mysqli_query(self::$connection,$query);
     }
     
+    
+    public static function SELECT($requests,$tables,$require){
+        self::query("SELECT $requests FROM $tables WHERE $require");
+    }
+    
+    
+    public static function GET($requests,$tables,$require){
+        self::SELECT($requests,$tables,$require);
+    }
+    
+    public static function UPDATE($tables,$requests,$require){
+        self::query("UPDATE $tables SET $requests WHERE $require");
+    }
+    
+    
+    public static function INSERT($table,$rowname,$values){
+        self::query("INSERT INTO $table $rowname VALUES($values)");
+    }
+    
+    
+    public static function DELETE($table,$require){
+        self::query("DELETE FROM $table WHERE $require");
+    }
+    
+    
+    public static function getAffected_Rows(){
+        return mysqli_affected_rows(self::result);
+    }
+    
     /**
      * 返回上次SQL的结果
      * @return bool/mysqli_result
@@ -67,4 +96,4 @@ final class SQL{
         return self::$result;
     }
 }
-?>
+

@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS `activities` (
   `author_id` int(11) NOT NULL,
   `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `end_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `parters` text,
   `activity_describe` text,
   `activity_note` text,
   PRIMARY KEY (`id`)
@@ -32,6 +31,12 @@ CREATE TABLE IF NOT EXISTS `sites` (
   KEY `name_3` (`site_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `user-activity` (
+  `user_id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `userinfo` (
   `id` int(11) NOT NULL,
   `name` char(32) NOT NULL,
@@ -46,7 +51,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `usergroup` enum('admin','user') NOT NULL DEFAULT 'user',
   `regist_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `activities` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `id` (`id`),
