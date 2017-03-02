@@ -58,13 +58,23 @@
 			$assoc[]=$row;
 		}
 		$activities_count=count($assoc);
-		for($i=0;$i<$activities_count;$i++){
+		for($i=$activities_count-1;$i>=0;$i--){
+			$start_time=strtotime($assoc["$i"]["start_time"]);
+			$end_time=strtotime($assoc["$i"]["end_time"]);
+			$now=time();
 			echo "<tr>";
-			echo "<td>".$assoc["$i"]['id']."</td>";
-			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a></td>";
+			echo '<td class="hidden-xs">'.$assoc["$i"]['id']."</td>";
+			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a>";
+			if($now<$start_time){
+				echo '<span class="label label-warning">即将开始</span>';
+			}else if($now>$end_time){
+				echo '<span class="label label-default">已结束</span>';
+			}else{
+				echo '<span class="label label-success">正在进行</span>';
+			}
+			echo "</td>";
 			echo "<td>".$assoc["$i"]['username']."</td>";
-			echo "<td>".$assoc["$i"]['activity_describe']."</td>";
-			echo "<td>".$assoc["$i"]['start_time']."</td>";
+			echo '<td class="hidden-xs">'.$assoc["$i"]['start_time']."</td>";
 			echo "</tr>";
 		}
 	}else if($get_activities==true){
@@ -73,13 +83,23 @@
             $assoc[]=$row;
         }
 		$activities_count=count($assoc);
-		for($i=0;$i<$activities_count;$i++){
+		for($i=$activities_count-1;$i>=0;$i--){
+			$start_time=strtotime($assoc["$i"]["start_time"]);
+			$end_time=strtotime($assoc["$i"]["end_time"]);
+			$now=time();
 			echo "<tr>";
-			echo "<td>".$assoc["$i"]['id']."</td>";
-			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a></td>";
+			echo '<td class="hidden-xs">'.$assoc["$i"]['id']."</td>";
+			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a>";		
+			if($now<$start_time){
+				echo '<span class="label label-warning">即将开始</span>';
+			}else if($now>$end_time){
+				echo '<span class="label label-default">已结束</span>';
+			}else{
+				echo '<span class="label label-success">正在进行</span>';
+			}
+			echo "</td>";
 			echo "<td>".$assoc["$i"]['username']."</td>";
-			echo "<td>".$assoc["$i"]['activity_describe']."</td>";
-			echo "<td>".$assoc["$i"]['start_time']."</td>";
+			echo '<td class="hidden-xs">'.$assoc["$i"]['start_time']."</td>";
 			echo "</tr>";
 		}
 	}else{

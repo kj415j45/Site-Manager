@@ -3,6 +3,7 @@ include "Model.php";
 class User implements Model{//TODO
     private $id;
     private $username;
+	private $md5password;
     private $usergroup;
     
     private $name;
