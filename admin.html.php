@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?=$site_name ?></title>
+    <title><?=$site_name ?>-管理</title>
 
     <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><?=$site_head ?></a>
+				<a class="navbar-brand"><?=$site_head ?></a>
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="true">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -41,12 +41,10 @@
 	</nav>
 	<!-- 头部结束 -->
 	<!-- 主容器开始 -->
-    <div class="container">
-		<?php require "include/admin_activities.html.php" ?>
-		<?php require "include/admin_sites.html.php" ?>
-		<?php require "include/admin_users.html.php" ?>
-		<?php require "include/admin_global_setting.html.php" ?>
-    </div>
+	<?php require "include/admin_activities.html.php" ?>
+	<?php require "include/admin_sites.html.php" ?>
+	<?php require "include/admin_users.html.php" ?>
+	<?php require "include/admin_global_setting.html.php" ?>
     <!-- 主容器结束 -->
     <!-- 底部开始 -->
     <?php require "include/footer.html.php" ?>
