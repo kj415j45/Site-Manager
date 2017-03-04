@@ -8,8 +8,10 @@
 	
 	if(isset($get_activity_id)){
 		$Parsedown = new Parsedown();
-		SQL::query("SELECT activity_name,username,activity_describe,activity_note,start_time,end_time,site_name FROM activities,users,sites WHERE activities.author_id = users.id AND site_id = sites.id AND activities.id = ".$get_activity_id);
-		$assoc=mysqli_fetch_assoc(SQL::getResult());
+		SQL::SELECT("activity_name,username,activity_describe,activity_note,start_time,end_time,site_name",
+					"activities,users,sites",
+					"activities.author_id = users.id AND site_id = sites.id AND activities.id = '".$get_activity_id."'");
+		$assoc=SQL::getAssoc(SQL::getResult());
 		$start_time=strtotime($assoc["start_time"]);
 		$end_time=strtotime($assoc["end_time"]);
 		$now=time();
@@ -53,7 +55,9 @@
 			echo '</div>';
 		}
 	}else if(isset($get_user_activities)){
-		SQL::query("SELECT activities.id,activity_name,username,activity_describe,start_time FROM activities,users WHERE author_id=users.id AND username='".$get_user_activities."'");
+		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time",
+					"activities,users",
+					"author_id=users.id AND username='".$get_user_activities."'");
 		while($row=SQL::getResult()->fetch_assoc()){    
 			$assoc[]=$row;
 		}
@@ -78,7 +82,9 @@
 			echo "</tr>";
 		}
 	}else if($get_activities==true){
-		SQL::query("SELECT activities.id,activity_name,username,activity_describe,start_time FROM activities,users WHERE activities.author_id = users.id");
+		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time",
+					"activities,users",
+					"activities.author_id = users.id");
 		while($row=SQL::getResult()->fetch_assoc()){    
             $assoc[]=$row;
         }
