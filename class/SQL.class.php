@@ -62,29 +62,29 @@ final class SQL{//TODO
     /**
 	 * 和SELECT语句变量顺序一致
 	 */
-    public static function SELECT($requests,$tables,$require){
-        self::query("SELECT $requests FROM $tables WHERE $require");
+    public static function SELECT($requests,$tables,$require,$extra){
+        self::query("SELECT $requests FROM $tables WHERE $require $extra");
     }
     
     /**
 	 * 实际调用的是SELECT
 	 */
-    public static function GET($requests,$tables,$require){
-        self::SELECT($requests,$tables,$require);
+    public static function GET($requests,$tables,$require,$extra){
+        self::SELECT($requests,$tables,$require,$extra);
     }
     
 	/**
 	 * 和UPDATE语句变量顺序一致
 	 */
-    public static function UPDATE($tables,$requests,$require){
-        self::query("UPDATE $tables SET $requests WHERE $require");
+    public static function UPDATE($tables,$requests,$require,$extra){
+        self::query("UPDATE $tables SET $requests WHERE $require $extra");
     }
     
     /**
 	 * 和INSERT语句变量顺序一致
 	 */
-    public static function INSERT($table,$rowname,$values){
-        self::query("INSERT INTO $table $rowname VALUES($values)");
+    public static function INSERT($table,$rowname,$values,$extra){
+        self::query("INSERT INTO $table ($rowname) VALUES($values) $extra");
     }
     
     /**
