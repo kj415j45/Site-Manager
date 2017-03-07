@@ -1,6 +1,6 @@
 <?php session_start();?>
 <li><a href="#"><?php echo $_SESSION["usergroup"]; ?></a></li>
-<li><a href="#"><?php echo $_SESSION["username"]; ?></a></li>
+<li><a href="userinfo.php?user=<?php echo $_SESSION["username"]; ?>"><?php echo $_SESSION["username"]; ?></a></li>
 <li><a href="activities.php?user=<?php echo $_SESSION["username"]; ?>">我的活动</a></li>
 <?php 
 	if($_SESSION["usergroup"]=="管理员"){
