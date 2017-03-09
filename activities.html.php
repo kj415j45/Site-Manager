@@ -19,8 +19,17 @@
 	<!-- 主容器开始 -->
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                    <h1 class="page-header">活动列表</h1>
+            <div class="col-xs-12">
+					<h1 class="page-header">活动列表
+						<small>
+						<div class="pull-right">
+						<a class="btn btn-primary " href="edit_activity.php" role="button">
+							<span class="glyphicon glyphicon-plus"></span> 
+							<span class="hidden-xs">新建活动</span>
+						</a>
+						</div>
+						</small>
+					</h1>
                     <table class="table table-condensed table-striped">
                         <tbody>
                             <tr>
