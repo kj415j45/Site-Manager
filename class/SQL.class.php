@@ -98,7 +98,7 @@ final class SQL{//TODO
 	 * 取得上次操作影响的行数
 	 */
     public static function getAffected_Rows(){
-        return mysqli_affected_rows(self::result);
+        return mysqli_affected_rows(self::$result);
     }
     
 	/**
@@ -115,6 +115,12 @@ final class SQL{//TODO
 		return mysqli_fetch_assoc($result);
 	}
 	
+	/**
+	 * 修复UTF-8字符集BUG
+	 */
+	public static function fixUTF8(){
+		self::query("SET NAMES utf8");
+	}
 	
     /**
      * 取得上次SQL的结果
