@@ -19,21 +19,34 @@
 	<!-- 主容器开始 -->
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-sm-4">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<div class="col-xs-4">
+						<div class="col-md-4 col-xs-6">
 							<div class="thumbnail" style="border:0;">
 								<img src="userhead/<?php echo $_SESSION["username"] ?>.jpg" class="img-circle">
 							</div>
 						</div>
-						<div class="col-xs-8">
-							<h4>Test</h4>
+						<div class="col-md-8 col-xs-6">
+							<h4><?php echo $_SESSION["username"] ?></h4>
 						</div>
 					</div>
 				</div>
             </div>
-			<div class="col-md-8">
+			<div class="col-sm-8">
+			    <table class="table table-condensed table-striped">
+                    <tbody>
+                        <tr>
+                            <td class="hidden-xs">ID</td>
+                            <td>活动名称</td>
+                            <td>发起人</td>
+                            <td class="hidden-xs">开始时间</td>
+                        </tr>
+						<?php
+							$get_user_activities=$_SESSION["username"];
+							require "include/get_activity.php";
+						?>
+                </tbody>
 			</div>
         </div>
     </div>
