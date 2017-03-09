@@ -26,8 +26,8 @@
 			}
 			SQL::INSERT("users",
 						"username,password,usergroup,regist_time,last_time",
-						"'".$_POST["username"]."','".$_POST["md5password"]."','user','".date("YmdHis",time())."','".date("YmdHis",time())."')");
-			if(SQL::getResult()){//如果插入成功
+						"'{$_POST["username"]}','{$_POST["md5password"]}','user','".date("YmdHis",time())."','".date("YmdHis",time())."'");
+			if(SQL::getAffected_Rows()==1){//如果插入成功
 				$_SESSION["username"]=$_POST["username"];//设置session
 				$_SESSION["usergroup"]="用户";
 				
