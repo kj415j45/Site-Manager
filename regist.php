@@ -4,8 +4,10 @@
 	session_start();
 	
 	if(isset($_POST["username"])){
-		SQL::query("SELECT password,usergroup FROM users WHERE username='".$_POST["username"]."'");
-		$assoc=mysqli_fetch_assoc(SQL::getResult());
+		SQL::SELECT("password,usergroup",
+					"users",
+					"username='".$_POST["username"]."'");
+		$assoc=SQL::getAssoc(SQL::getResult());
 		if($assoc==null){
 			if(preg_match("/[a-zA-Z]\\w{3,15}/",$_POST["username"],$match)){
 				if(strcmp($match[0],$_POST["username"])==0){
@@ -22,8 +24,10 @@
 				page_jump($site_host."regist.php",0);
 				exit(0);
 			}
-			SQL::query("INSERT users(username,password,usergroup,regist_time,last_time) VALUES('".$_POST["username"]."','".$_POST["md5password"]."','user','".date("YmdHis",time())."','".date("YmdHis",time())."')");
-			if(SQL::getResult()){//如果插入成功
+			SQL::INSERT("users",
+						"username,password,usergroup,regist_time,last_time",
+						"'{$_POST["username"]}','{$_POST["md5password"]}','user','".date("YmdHis",time())."','".date("YmdHis",time())."'");
+			if(SQL::getAffected_Rows()==1){//如果插入成功
 				$_SESSION["username"]=$_POST["username"];//设置session
 				$_SESSION["usergroup"]="用户";
 				
@@ -43,9 +47,8 @@
 		require("regist.html.php");
 	}else{
 		SQL::query("SELECT password,usergroup FROM users WHERE username='".$_GET["check_username"]."'");
-		$assoc=mysqli_fetch_assoc(SQL::getResult());
+		$assoc=SQL::getAssoc(SQL::getResult());
 		if($assoc!=null){
 			echo $_GET["check_username"];
 		}
 	}
-?>

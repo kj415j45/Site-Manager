@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $site_name ?></title>
+    <title><?php echo $site_name ?>-活动列表</title>
 
     <!-- Bootstrap样式表 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,16 +19,24 @@
 	<!-- 主容器开始 -->
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                    <h1 class="page-header">活动列表</h1>
+            <div class="col-xs-12">
+					<h1 class="page-header">活动列表
+						<small>
+						<div class="pull-right">
+						<a class="btn btn-primary " href="edit_activity.php" role="button">
+							<span class="glyphicon glyphicon-plus"></span> 
+							<span class="hidden-xs">新建活动</span>
+						</a>
+						</div>
+						</small>
+					</h1>
                     <table class="table table-condensed table-striped">
                         <tbody>
                             <tr>
-                                <td>ID</td>
+                                <td class="hidden-xs">ID</td>
                                 <td>活动名称</td>
                                 <td>发起人</td>
-                                <td>活动简介</td>
-                                <td>开始时间</td>
+                                <td class="hidden-xs">开始时间</td>
                             </tr>
 							<?php
 								if(isset($_GET["id"])){

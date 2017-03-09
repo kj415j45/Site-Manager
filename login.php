@@ -1,7 +1,7 @@
 <?php
+    session_start();
     require_once "include/sql_connect.php";
     require_once "include/public_function.php";
-    session_start();
 
 	/**
      * 如果方式是POST就处理登录数据
@@ -22,8 +22,8 @@
 			page_jump($site_host."login.php",0);
 			exit(0);
 		}
-        SQL::query("SELECT password,usergroup FROM users WHERE username='".$_POST["username"]."'");
-        $assoc=mysqli_fetch_assoc(SQL::getResult());
+		SQL::SELECT("password,usergroup","users","username='{$_POST['username']}'");
+        $assoc=SQL::getAssoc(SQL::getResult());
 		if($assoc!=null){
 			if($assoc["password"]!=$_POST["md5password"]){//如果密码错误
 				js_message("密码错误");
@@ -32,7 +32,7 @@
 				$_SESSION["username"]=$_POST["username"];//设置session
 				$_SESSION["usergroup"]=$assoc["usergroup"]=="admin"?"管理员":"用户";
 				
-				SQL::query("UPDATE users SET last_time='".date("YmdHis",time())."' WHERE username='".$_POST["username"]."'");//更新最后上线时间
+				SQL::UPDATE("users","last_time='".date("YmdHis",time())."'","username='{$_POST["username"]}'");//更新最后上线时间
 				
 				js_message("欢迎回来,".$_SESSION["usergroup"].$_SESSION["username"]);
 				page_jump($site_host."index.php",0);
@@ -59,4 +59,3 @@
         js_message("您已退出");
         page_jump($site_host."index.php",0);
     }
-?>

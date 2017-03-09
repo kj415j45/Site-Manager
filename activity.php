@@ -9,4 +9,3 @@
 		exit(0);
 	}
     require "activity.html.php";
-?>

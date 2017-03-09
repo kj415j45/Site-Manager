@@ -14,4 +14,12 @@ function js_message($message){
 function page_jump($target,$time){
     header("Refresh:".$time.";url=".$target);
 }
-?>
+/**
+ * 内容显示
+ * @param $var 任意变量类型的变量
+ */
+function show($var){
+	echo '<pre>';
+	var_dump($var);
+	echo '</pre>';
+}

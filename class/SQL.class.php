@@ -3,7 +3,7 @@
  * sql连接类
  * @author kj415j45
  */
-final class SQL{
+final class SQL{//TODO
     /**
      * sql连接，单例模式
      */
@@ -60,11 +60,73 @@ final class SQL{
     }
     
     /**
-     * 返回上次SQL的结果
-     * @return bool/mysqli_result
+	 * 和SELECT语句变量顺序一致
+	 */
+    public static function SELECT($requests,$tables,$require,$extra){
+        self::query("SELECT $requests FROM $tables WHERE $require $extra");
+    }
+    
+    /**
+	 * 实际调用的是SELECT
+	 */
+    public static function GET($requests,$tables,$require,$extra){
+        self::SELECT($requests,$tables,$require,$extra);
+    }
+    
+	/**
+	 * 和UPDATE语句变量顺序一致
+	 */
+    public static function UPDATE($tables,$requests,$require,$extra){
+        self::query("UPDATE $tables SET $requests WHERE $require $extra");
+    }
+    
+    /**
+	 * 和INSERT语句变量顺序一致
+	 */
+    public static function INSERT($table,$rowname,$values,$extra){
+        self::query("INSERT INTO $table ($rowname) VALUES($values) $extra");
+    }
+    
+    /**
+	 * 和DELETE语句变量顺序一致
+	 */
+    public static function DELETE($table,$require){
+        self::query("DELETE FROM $table WHERE $require");
+    }
+    
+    /**
+	 * 取得上次操作影响的行数
+	 */
+    public static function getAffected_Rows(){
+        return mysqli_affected_rows(self::$result);
+    }
+    
+	/**
+	 * 取得指定结果集的数组
+	 */
+	public static function getArray($result){
+		return mysqli_fetch_array($result);
+	}
+	
+	/**
+	 * 取得指定结果集的关联数组
+	 */
+	public static function getAssoc($result){
+		return mysqli_fetch_assoc($result);
+	}
+	
+	/**
+	 * 修复UTF-8字符集BUG
+	 */
+	public static function fixUTF8(){
+		self::query("SET NAMES utf8");
+	}
+	
+    /**
+     * 取得上次SQL的结果
      */
     public static function getResult(){
         return self::$result;
     }
 }
-?>
+
