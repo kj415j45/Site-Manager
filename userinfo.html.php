@@ -28,7 +28,13 @@
 							</div>
 						</div>
 						<div class="col-md-8 col-xs-6">
-							<h4><?php echo $_SESSION["username"] ?></h4>
+							<h4><?php echo $_SESSION["username"] ?>
+								<div class="pull-right">
+									<a href="edit_userinfo.php?user=<?php echo $_SESSION["username"] ?>" role="button">
+										<span class="glyphicon glyphicon-pencil"></span> 
+									</a>
+								</div>
+							</h4>
 						</div>
 					</div>
 				</div>
