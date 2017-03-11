@@ -3,9 +3,9 @@
 	require_once __DIR__."/sql_connect.php";
 	require_once __DIR__."/public_function.php";
 	require_once __DIR__."/../class/Parsedown.class.php";
-	
+
 	unset($assoc);
-	
+
 	if(isset($get_activity_id)){
 		$Parsedown = new Parsedown();
 		SQL::SELECT("activity_name,username,activity_describe,activity_note,start_time,end_time,site_name",
@@ -30,10 +30,15 @@
 		echo '</div>';
 		echo '<div class="col-md-2 page-header">';
 		if($_SESSION["username"]!=NULL&&time()<$start_time){
-			echo '<a class="btn btn-success" href="join_activity?id='.$_GET["id"].'">加入</a>';
+			SQL::SELECT("user_id","user-activity","activity_id='{$_GET['id']}'");
+			if(SQL::getResult()==NULL){
+				echo '<a class="btn btn-success" href="join_activity?id='.$_GET["id"].'">加入</a>';
+			}else{
+				echo '<a class="btn btn-warning" href="exit_activity?id='.$_GET["id"].'">退出</a>';
+			}
 			echo '<span> </span>';
 		}
-		if(($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员")&&$now<$start_time){
+		if($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员"){
 			echo '<a class="btn btn-primary" href="edit_activity.php?id='.$_GET["id"].'">编辑</a>';
 		}
 		echo '</div>';
@@ -58,7 +63,7 @@
 		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
 					"activities,users",
 					"author_id=users.id AND username='".$get_user_activities."'");
-		while($row=SQL::getResult()->fetch_assoc()){    
+		while($row=SQL::getResult()->fetch_assoc()){
 			$assoc[]=$row;
 		}
 		$activities_count=count($assoc);
@@ -85,7 +90,7 @@
 		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
 					"activities,users",
 					"activities.author_id = users.id");
-		while($row=SQL::getResult()->fetch_assoc()){    
+		while($row=SQL::getResult()->fetch_assoc()){
             $assoc[]=$row;
         }
 		$activities_count=count($assoc);
@@ -95,7 +100,7 @@
 			$now=time();
 			echo "<tr>";
 			echo '<td class="hidden-xs">'.$assoc["$i"]['id']."</td>";
-			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a>";		
+			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a>";
 			if($now<$start_time){
 				echo '<span class="label label-warning">即将开始</span>';
 			}else if($now>$end_time){
