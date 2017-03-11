@@ -22,14 +22,15 @@
 			page_jump($site_host."login.php",0);
 			exit(0);
 		}
-		SQL::SELECT("password,usergroup","users","username='{$_POST['username']}'");
+		SQL::SELECT("id,password,usergroup","users","username='{$_POST['username']}'");
         $assoc=SQL::getAssoc(SQL::getResult());
 		if($assoc!=null){
 			if($assoc["password"]!=$_POST["md5password"]){//如果密码错误
 				js_message("密码错误");
 				page_jump($site_host."login.php",0);
 			}else{
-				$_SESSION["username"]=$_POST["username"];//设置session
+				$_SESSION["user_id"]=$assoc["id"];//设置session
+				$_SESSION["username"]=$_POST["username"];
 				$_SESSION["usergroup"]=$assoc["usergroup"]=="admin"?"管理员":"用户";
 				
 				SQL::UPDATE("users","last_time='".date("YmdHis",time())."'","username='{$_POST["username"]}'");//更新最后上线时间
