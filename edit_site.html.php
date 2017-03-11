@@ -20,17 +20,17 @@
     <!-- 主容器开始 -->
     <div class="container">
         <h1 class="page-header">编辑场地</h1>
-        <form class="form-horizontal" method="post" action="<?=$site_host ?>test.php">
+        <form class="form-horizontal" method="post" action="<?=$site_host ?>edit_site.php">
             <div class="form-group">
                 <label class="col-md-1 control-label">场地名称</label>
                 <div class="col-md-11">
-                    <input type="text" class="form-control" name="site_name" placeholder="场地名称">
+                    <input type="text" class="form-control" name="site_name" placeholder="场地名称" value="<?=$name ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-1 control-label">场地介绍</label>
                 <div class="col-md-11">
-                    <textarea class="col-md-6 form-control" rows="10"></textarea>
+                    <textarea class="col-md-6 form-control" name="site_describe" rows="10"><?=$site_describe ?></textarea>
                 </div>
             </div>
 			<div class="form-group">
@@ -60,7 +60,7 @@
                     <button type="submit" class="btn btn-primary col-md-12">提交</button>
                 </div>
             </div>
-            <input type="hidden" name="site_id" value="">
+            <input type="hidden" name="site_id" value="<?php echo isset($_GET["id"])?$_GET["id"]:'0'; ?>">
         </form>
     </div>
     <!-- 主容器结束 -->
