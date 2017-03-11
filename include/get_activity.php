@@ -55,7 +55,7 @@
 			echo '</div>';
 		}
 	}else if(isset($get_user_activities)){
-		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time",
+		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
 					"activities,users",
 					"author_id=users.id AND username='".$get_user_activities."'");
 		while($row=SQL::getResult()->fetch_assoc()){    
@@ -82,7 +82,7 @@
 			echo "</tr>";
 		}
 	}else if($get_activities==true){
-		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time",
+		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
 					"activities,users",
 					"activities.author_id = users.id");
 		while($row=SQL::getResult()->fetch_assoc()){    
