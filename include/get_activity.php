@@ -33,7 +33,7 @@
 			echo '<a class="btn btn-success" href="join_activity?id='.$_GET["id"].'">加入</a>';
 			echo '<span> </span>';
 		}
-		if($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员"){
+		if(($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员")&&$now<$start_time){
 			echo '<a class="btn btn-primary" href="edit_activity.php?id='.$_GET["id"].'">编辑</a>';
 		}
 		echo '</div>';
