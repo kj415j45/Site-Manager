@@ -64,7 +64,7 @@
 			  <button type="submit" class="btn btn-primary col-md-12">提交</button>
 			 </div>
 		  </div>
-		  <input type="hidden" name="activity_id" value="<?=$_GET["id"] ?>">
+		  <input type="hidden" name="activity_id" value="<?php echo isset($_GET["id"])?$_GET["id"]:'0'; ?>">
 		</form>
     </div>
     <!-- 主容器结束 -->

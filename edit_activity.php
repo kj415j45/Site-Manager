@@ -5,17 +5,23 @@
 	
 	unset($assoc);
 	
-	if(isset($_POST["activity_id"])){
+	if(isset($_POST["activity_id"])&&$_POST["activity_id"]!='0'){
 		SQL::UPDATE("activities,sites",
 					"site_id=sites.id,activity_name='".$_POST["activity_name"]."',start_time='".$_POST["start_time"]."',end_time='".$_POST["end_time"]."',activity_describe='".$_POST["activity_describe"]."'",
 					"activities.id='".$_POST["activity_id"]."' AND sites.site_name='".$_POST["site_name"]."';");//不考虑恶意修改(不验证session)
-		if(SQL::getAffected_Rows()==1){
-			js_message("更新成功");
-		}else{
-			js_message("更新失败");
-		}
 		page_jump("activity.php?id=".$_POST["activity_id"],0);
-	}else if(isset($_GET["id"])){//GET中定义了id则是编辑
+	}else if($_POST["activity_id"]=='0'){
+		SQL::SELECT("id",
+					"sites",
+					"site_name='{$_POST['site_name']}'");
+		$assoc=SQL::getAssoc(SQL::getResult());
+		$site_id=$assoc["id"];
+		SQL::INSERT("activities",
+					"activity_name,site_id,author_id,start_time,end_time,activity_describe",
+					"'{$_POST['activity_name']}','{$site_id}','{$_SESSION['user_id']}','{$_POST['start_time']}','{$_POST['end_time']}','{$_POST['activity_describe']}'");
+		page_jump("activities.php",0);
+	}
+	if(isset($_GET["id"])){//GET中定义了id则是编辑
 		SQL::SELECT("username",
 					"activities,users",
 					"users.id=activities.author_id AND activities.id='".$_GET["id"]."'");
