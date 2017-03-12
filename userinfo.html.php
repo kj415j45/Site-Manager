@@ -24,13 +24,13 @@
 					<div class="panel-body">
 						<div class="col-md-4 col-xs-6">
 							<div class="thumbnail" style="border:0;">
-								<img src="userhead/<?php echo $_SESSION["username"] ?>.jpg" class="img-circle">
+								<img src="userhead/<?=$_GET['user'] ?>.jpg" class="img-circle">
 							</div>
 						</div>
 						<div class="col-md-8 col-xs-6">
-							<h4><?php echo $_SESSION["username"] ?>
+							<h4><?=$_GET['user'] ?>
 								<div class="pull-right">
-									<a href="edit_userinfo.php?user=<?php echo $_SESSION["username"] ?>" role="button">
+									<a href="edit_userinfo.php?user=<?=$_GET['user'] ?>" role="button">
 										<span class="glyphicon glyphicon-pencil"></span> 
 									</a>
 								</div>
@@ -49,7 +49,7 @@
                             <td class="hidden-xs">开始时间</td>
                         </tr>
 						<?php
-							$get_user_activities=$_SESSION["username"];
+							$get_user_activities=$_GET['user'];
 							require "include/get_activity.php";
 						?>
                 </tbody>
