@@ -49,7 +49,7 @@
                             <td class="hidden-xs">开始时间</td>
                         </tr>
 						<?php
-							$get_user_activities=$_GET['user'];
+							$get_user_join_activities=$_GET['user'];
 							require "include/get_activity.php";
 						?>
                 </tbody>

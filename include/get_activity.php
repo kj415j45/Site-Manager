@@ -89,7 +89,8 @@
 	}else if($get_activities==true){
 		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
 					"activities,users",
-					"activities.author_id = users.id");
+					"activities.author_id = users.id",
+					"ORDER BY activities.id");
 		while($row=SQL::getResult()->fetch_assoc()){
             $assoc[]=$row;
         }
@@ -99,6 +100,35 @@
 			$end_time=strtotime($assoc["$i"]["end_time"]);
 			$now=time();
 			echo "<tr>";
+			echo '<td class="hidden-xs">'.$assoc["$i"]['id']."</td>";
+			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a>";
+			if($now<$start_time){
+				echo '<span class="label label-warning">即将开始</span>';
+			}else if($now>$end_time){
+				echo '<span class="label label-default">已结束</span>';
+			}else{
+				echo '<span class="label label-success">正在进行</span>';
+			}
+			echo "</td>";
+			echo "<td>".$assoc["$i"]['username']."</td>";
+			echo '<td class="hidden-xs">'.$assoc["$i"]['start_time']."</td>";
+			echo "</tr>";
+		}
+	}else if(isset($get_user_join_activities)){
+	    SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
+					"`user-activity`,users,activities",
+					"`user-activity`.user_id = (SELECT id FROM users WHERE username='{$get_user_join_activities}') AND activities.id=`user-activity`.activity_id AND users.id=activities.author_id",
+					"ORDER BY activities.id");
+		while($row=SQL::getResult()->fetch_assoc()){
+            $assoc[]=$row;
+        }
+		$activities_count=count($assoc);
+		for($i=$activities_count-1;$i>=0;$i--){
+			$start_time=strtotime($assoc["$i"]["start_time"]);
+			$end_time=strtotime($assoc["$i"]["end_time"]);
+			$now=time();
+			echo "<tr>";
+
 			echo '<td class="hidden-xs">'.$assoc["$i"]['id']."</td>";
 			echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a>";
 			if($now<$start_time){
