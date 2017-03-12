@@ -13,6 +13,7 @@ function js_message($message){
  */
 function page_jump($target,$time){
     header("Refresh:".$time.";url=".$target);
+    exit(0);
 }
 /**
  * 内容显示
