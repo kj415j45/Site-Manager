@@ -49,7 +49,7 @@
 	    $x=SQL::getAssoc(SQL::getResult());
 	    if($x!=NULL){
 	        js_message('与id为'.$x['id'].'的活动"'.$x['activity_name'].'"有时间冲突');
-	        page_jump('edit_activity.php?id='.$_POST["activity_id"],0);
+	        page_jump('edit_activity.php',0);
 	    }
 	    
 		SQL::SELECT("id",
