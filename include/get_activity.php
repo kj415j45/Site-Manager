@@ -38,7 +38,7 @@
 			}
 			echo '<span> </span>';
 		}
-		if($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员"){
+		if($now<$start_time&&($_SESSION["username"]==$assoc["username"]||$_SESSION["usergroup"]=="管理员")){
 			echo '<a class="btn btn-primary" href="edit_activity.php?id='.$_GET["id"].'">编辑</a>';
 		}
 		echo '</div>';
