@@ -55,7 +55,8 @@
             require_once "login.html.php";
         }
     }else if($_GET["action"]=="logout"){//操作是退出
-        unset($_SESSION["username"]);//移除session
+        unset($_SESSION['user_id']);//移除session
+        unset($_SESSION["username"]);
         unset($_SESSION["usergroup"]);
         js_message("您已退出");
         page_jump($site_host."index.php",0);
