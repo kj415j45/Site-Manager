@@ -30,11 +30,11 @@
 		echo '</div>';
 		echo '<div class="col-md-2 page-header">';
 		if($_SESSION["username"]!=NULL&&time()<$start_time){
-			SQL::SELECT("user_id","user-activity","activity_id='{$_GET['id']}'");
-			if(SQL::getResult()==NULL){
+			SQL::SELECT("*","`user-activity`","activity_id='{$_GET['id']}' AND user_id='{$_SESSION['user_id']}'");
+			if(SQL::getAssoc(SQL::getResult())==NULL){
 				echo '<a class="btn btn-success" href="join_activity.php?id='.$_GET["id"].'">加入</a>';
 			}else{
-				echo '<a class="btn btn-warning" href="exit_activity.php?id='.$_GET["id"].'">退出</a>';
+				echo '<a class="btn btn-danger" href="exit_activity.php?id='.$_GET["id"].'">退出</a>';
 			}
 			echo '<span> </span>';
 		}
