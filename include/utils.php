@@ -20,13 +20,13 @@ function getActivitiesByUser($username){
 		return $assoc;
 }
 
-function getActivitiesByID($id){
+function getActivityByID($id){
 		SQL::SELECT("activity_name,username,activity_describe,activity_note,start_time,end_time,site_name",
 					"activities,users,sites",
 					"activities.id = '".$id."'AND activities.author_id = users.id AND site_id = sites.id");
 		return SQL::getAssoc(SQL::getResult());
 }
 
-function deleteActivities($id){
+function deleteActivity($id){
 	SQL::DELETE("activities","activities.id = '".$id."'");
 }

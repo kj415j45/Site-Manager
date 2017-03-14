@@ -62,6 +62,13 @@
     <script src="js/bootstrap.min.js"></script>
 	
 	<script>
+		function getQueryString(name)
+		{
+			 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			 var r = window.location.search.substr(1).match(reg);
+			 if(r!=null)return unescape(r[2]); 
+			 return null;
+		}
 		function show(name){
 			$('#admin_activities').addClass('hidden');
 			$('#admin_sites').addClass('hidden');
@@ -74,6 +81,8 @@
 			$('#admin_'+name).removeClass('hidden');
 			$('#button_'+name).addClass('active');
 		}
+		var ui = getQueryString('ui');
+		if(ui!=null)show(ui);
 	</script>
   </body>
 </html>
