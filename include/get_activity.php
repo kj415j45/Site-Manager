@@ -8,7 +8,7 @@
 
 	if(isset($get_activity_id)){
 		$Parsedown = new Parsedown();
-		SQL::SELECT("activity_name,username,activity_describe,activity_note,start_time,end_time,site_name",
+		SQL::SELECT("activity_name,username,activity_describe,start_time,end_time,site_name,sites.id",
 					"activities,users,sites",
 					"activities.author_id = users.id AND site_id = sites.id AND activities.id = '".$get_activity_id."'");
 		$assoc=SQL::getAssoc(SQL::getResult());
@@ -43,18 +43,12 @@
 		echo '<li><big><span class="label label-info">发起人:'.$assoc["username"].'</span></big></li>';
 		echo '<li><big><span class="label label-warning">开始时间:'.$assoc["start_time"].'</span></big></li>';
 		echo '<li><big><span class="label label-success">结束时间:'.$assoc["end_time"].'</span></big></li>';
-		echo '<li><big><span class="label label-info">活动场地:'.$assoc["site_name"].'</span></big></li>';
+		echo '<li><big><a href="site.php?id='.$assoc["id"].'"><span class="label label-info">活动场地:'.$assoc["site_name"].'</span></a></big></li>';
 		echo '</ul>';
 		echo '<div class="panel panel-default">';
 		echo '<div class="panel-heading">详细介绍</div>';
 		echo '<div class="panel-body">'.$Parsedown->text($assoc["activity_describe"]).'</div>';
 		echo '</div>';
-		if($assoc["activity_note"]!=NULL){
-			echo '<div class="panel panel-default">';
-			echo '<div class="panel-heading">备注</div>';
-			echo '<div class="panel-body">'.$Parsedown->text($assoc["activity_note"]).'</div>';
-			echo '</div>';
-		}
 		
 		SQL::SELECT("name,username",
 					"`user-activity`,users,userinfo",
