@@ -57,8 +57,8 @@
 		}
 		
 		SQL::SELECT("name,username",
-					"`user-activity`,users",
-					"activity_id='{$get_activity_id}' AND user_id=users.id");//TODO
+					"`user-activity`,users,userinfo",
+					"activity_id='{$get_activity_id}' AND user_id=users.id AND user_id=userinfo.id");//TODO
 		unset($assoc);
 		while($row=SQL::getResult()->fetch_assoc()){
 			$assoc[]=$row;
@@ -69,8 +69,8 @@
 			echo '<div class="panel-body">';
 			$users_count=count($assoc);
 			for($i=$users_count-1;$i>=0;$i--){
-				echo '<a style="padding:0;" href="userinfo.php?user='.$row["username"].'"><img src="userhead/'.(file_exists(__DIR__."../userhead/".$row["username"])?$row["username"]:".default").'" class="img-circle" width=48 height=48>';
-				echo $row['name'].' </a>';
+				echo '<a style="padding:0;" href="userinfo.php?user='.$assoc[$i]["username"].'"><img src="userhead/'.(file_exists(__DIR__."../userhead/".$assoc[$i]["username"])?$assoc[$i]["username"]:".default").'" class="img-circle" width=48 height=48>';
+				echo ($assoc[$i]['name']==NULL?$assoc[$i]["username"]:$assoc[$i]['name']).' </a>';
 			}	
 			echo '</div>';
 			echo '</div>';
