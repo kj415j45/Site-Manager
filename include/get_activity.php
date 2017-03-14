@@ -55,6 +55,26 @@
 			echo '<div class="panel-body">'.$Parsedown->text($assoc["activity_note"]).'</div>';
 			echo '</div>';
 		}
+		
+		SQL::SELECT("name,username",
+					"`user-activity`,users",
+					"activity_id='{$get_activity_id}' AND user_id=users.id");//TODO
+		unset($assoc);
+		while($row=SQL::getResult()->fetch_assoc()){
+			$assoc[]=$row;
+		}
+		if($assoc!=NULL){
+			echo '<div class="panel panel-default">';
+			echo '<div class="panel-heading">参与者</div>';
+			echo '<div class="panel-body">';
+			$users_count=count($assoc);
+			for($i=$users_count-1;$i>=0;$i--){
+				echo '<a style="padding:0;" href="userinfo.php?user='.$row["username"].'"><img src="userhead/'.(file_exists(__DIR__."../userhead/".$row["username"])?$row["username"]:".default").'" class="img-circle" width=48 height=48>';
+				echo $row['name'].' </a>';
+			}	
+			echo '</div>';
+			echo '</div>';
+		}
 	}else if(isset($get_user_activities)){
 		SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
 					"activities,users",
