@@ -10,4 +10,4 @@
 	}
 ?>
 <li><a href="login.php?action=logout">退出</a></li>
-<li class="hidden-xs"><img src="userhead/<?php echo file_exists(__DIR__."../userhead/".$_SESSION["username"])?$_SESSION["username"]:".default" ?>" class="img-circle" width=48 height=48></li>
+<li class="hidden-xs"><a style="padding:0;" href="userinfo.php?user=<?=$_SESSION["username"] ?>"><img src="userhead/<?php echo file_exists(__DIR__."../userhead/".$_SESSION["username"])?$_SESSION["username"]:".default" ?>" class="img-circle" width=48 height=48></a></li>
