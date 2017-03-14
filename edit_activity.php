@@ -19,7 +19,7 @@
 	    
 	    SQL::SELECT("id,activity_name",
 	                "activities",
-	                "NOT( (start_time<'{$start_time}' AND end_time<'{$start_time}') OR (start_time>'{$end_time}' AND end_time>'{$end_time}') ) AND site_id=(SELECT id FROM sites WHERE site_name='{$_POST['site_name']}')",
+	                "NOT( (start_time<'{$start_time}' AND end_time<'{$start_time}') OR (start_time>'{$end_time}' AND end_time>'{$end_time}') ) AND site_id=(SELECT id FROM sites WHERE site_name='{$_POST['site_name']}') AND activities.id!='{$_POST['activity_id']}'",
 	                "LIMIT 1");
 	    $x=SQL::getAssoc(SQL::getResult());
 	    if($x!=NULL){
