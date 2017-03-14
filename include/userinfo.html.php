@@ -1,7 +1,7 @@
 <?php session_start();?>
-<li><a href="#"><?php echo $_SESSION["usergroup"]; ?></a></li>
-<li><a href="userinfo.php?user=<?php echo $_SESSION["username"]; ?>"><?php echo $_SESSION["username"]; ?></a></li>
-<li><a href="activities.php?user=<?php echo $_SESSION["username"]; ?>">我的活动</a></li>
+<li><a href="#"><?=$_SESSION["usergroup"] ?></a></li>
+<li><a href="userinfo.php?user=<?=$_SESSION["username"] ?>"><?=$_SESSION["username"] ?></a></li>
+<li><a href="activities.php?user=<?=$_SESSION["username"] ?>">我的活动</a></li>
 <?php 
 	if($_SESSION["usergroup"]=="管理员"){
 ?>
@@ -10,4 +10,4 @@
 	}
 ?>
 <li><a href="login.php?action=logout">退出</a></li>
-<li class="hidden-xs"><img src="userhead/<?php echo $_SESSION["username"] ?>.jpg" class="img-circle" width=48 height=48></li>
+<li class="hidden-xs"><img src="userhead/<?php echo file_exists(__DIR__."../userhead/".$_SESSION["username"])?$_SESSION["username"]:".default" ?>" class="img-circle" width=48 height=48></li>
