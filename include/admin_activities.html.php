@@ -11,18 +11,40 @@
                             <td class="hidden-xs">开始时间</td>
 							<td></td>
                         </tr>
-						<tr>
-							<td class="hidden-xs">1</td>
-							<td>滑天下之大稽</td>
-							<td class="hidden-xs">滑稽</td>
-							<td class="hidden-xs">2333-3-3 03:33:33</td>
-							<td>
-								<big>
-								<a><span class="glyphicon glyphicon-pencil" aria-hidden="true" title="编辑"></span></a>
-								<a class="text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="删除"></span></a>
-								</big>
-							</td>
-						</tr>
+						<?php
+							require_once __DIR__."/sql_connect.php";
+							SQL::SELECT("activities.id,activity_name,username,activity_describe,start_time,end_time",
+							"activities,users",
+							"activities.author_id = users.id",
+							"ORDER BY activities.id");
+							while($row=SQL::getResult()->fetch_assoc()){
+								$assoc[]=$row;
+							}
+							$activities_count=count($assoc);
+							for($i=$activities_count-1;$i>=0;$i--){
+								$start_time=strtotime($assoc["$i"]["start_time"]);
+								$end_time=strtotime($assoc["$i"]["end_time"]);
+								$now=time();
+								echo "<tr>";
+								echo '<td class="hidden-xs">'.$assoc["$i"]['id']."</td>";
+								echo "<td><a href=".$site_host."activity.php?id=".$assoc["$i"]['id'].">".$assoc["$i"]['activity_name']."</a>";
+								if($now<$start_time){
+									echo '<span class="label label-warning">即将开始</span>';
+								}else if($now>$end_time){
+									echo '<span class="label label-default">已结束</span>';
+								}else{
+									echo '<span class="label label-success">正在进行</span>';
+								}
+								echo "</td>";
+								echo "<td>".$assoc["$i"]['username']."</td>";
+								echo '<td class="hidden-xs">'.$assoc["$i"]['start_time']."</td>";
+								echo '<td><big>';
+								echo '<a href="edit_activity.php?id='.$assoc["$i"]['id'].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" title="编辑"></span></a>';
+								echo ' <a class="text-danger" href="admin.php?delete_activity&id='.$assoc["$i"]['id'].'"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="删除"></span></a>';
+								echo '</big></td>';
+								echo "</tr>";
+							}
+						?>
                     </tbody>
                 </table>
 		</div>

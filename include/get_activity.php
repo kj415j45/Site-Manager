@@ -15,8 +15,6 @@
 		$start_time=strtotime($assoc["start_time"]);
 		$end_time=strtotime($assoc["end_time"]);
 		$now=time();
-		echo '<div class="row">';
-		echo '<div class="col-md-10">';
 		echo '<h1 class="page-header">活动:'.$assoc["activity_name"].'<small>';
 		if($now<$start_time){
 			echo '<span class="label label-warning">即将开始</span>';
@@ -25,10 +23,7 @@
 		}else{
 			echo '<span class="label label-success">正在进行</span>';
 		}
-		echo '</small>';
-		echo '</h1>';
-		echo '</div>';
-		echo '<div class="col-md-2 page-header">';
+		echo '<div class="pull-right">';
 		if($_SESSION["username"]!=NULL&&time()<$start_time){
 			SQL::SELECT("*","`user-activity`","activity_id='{$_GET['id']}' AND user_id='{$_SESSION['user_id']}'");
 			if(SQL::getAssoc(SQL::getResult())==NULL){
@@ -42,7 +37,8 @@
 			echo '<a class="btn btn-primary" href="edit_activity.php?id='.$_GET["id"].'">编辑</a>';
 		}
 		echo '</div>';
-		echo '</div>';
+		echo '</small>';
+		echo '</h1>';
 		echo '<ul class="list-inline">';
 		echo '<li><big><span class="label label-info">发起人:'.$assoc["username"].'</span></big></li>';
 		echo '<li><big><span class="label label-warning">开始时间:'.$assoc["start_time"].'</span></big></li>';
@@ -57,6 +53,26 @@
 			echo '<div class="panel panel-default">';
 			echo '<div class="panel-heading">备注</div>';
 			echo '<div class="panel-body">'.$Parsedown->text($assoc["activity_note"]).'</div>';
+			echo '</div>';
+		}
+		
+		SQL::SELECT("name,username",
+					"`user-activity`,users",
+					"activity_id='{$get_activity_id}' AND user_id=users.id");//TODO
+		unset($assoc);
+		while($row=SQL::getResult()->fetch_assoc()){
+			$assoc[]=$row;
+		}
+		if($assoc!=NULL){
+			echo '<div class="panel panel-default">';
+			echo '<div class="panel-heading">参与者</div>';
+			echo '<div class="panel-body">';
+			$users_count=count($assoc);
+			for($i=$users_count-1;$i>=0;$i--){
+				echo '<a style="padding:0;" href="userinfo.php?user='.$row["username"].'"><img src="userhead/'.(file_exists(__DIR__."../userhead/".$row["username"])?$row["username"]:".default").'" class="img-circle" width=48 height=48>';
+				echo $row['name'].' </a>';
+			}	
+			echo '</div>';
 			echo '</div>';
 		}
 	}else if(isset($get_user_activities)){
