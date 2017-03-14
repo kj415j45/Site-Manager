@@ -12,4 +12,11 @@
 		js_message("您没有权限编辑此用户的信息!");
 		page_jump($site_host."userinfo.php?user=".$_GET['user'],0);
 	}
+	SQL::SELECT("*",
+				"userinfo",
+				"id='{$_SESSION['user_id']}'");
+	$assoc=SQL::getAssoc(SQL::getResult());
+	$name=$assoc['name'];
+	$telephone=$assoc['telephone'];
+	$qq=$assoc['qq'];
     require "edit_userinfo.html.php";
