@@ -24,7 +24,7 @@
 					<div class="panel-body">
 						<div class="col-md-4 col-xs-6">
 							<div class="thumbnail" style="border:0;">
-								<img src="userhead/<?php echo file_exists(__DIR__."userhead/".$_GET["username"])?$_GET["username"]:".default" ?>" class="img-circle">
+								<img src="userhead/<?php echo file_exists(__DIR__."/userhead/".$_GET["user"])?$_GET["user"]:".default" ?>" class="img-circle">
 							</div>
 						</div>
 						<div class="col-md-8 col-xs-6">

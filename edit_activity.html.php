@@ -32,7 +32,10 @@
 			<label class="col-md-1 control-label">活动场地</label>
 				<div class="col-md-3">
 					<select class="form-control" name="site_name">
-						<?php require "include/get_sites.php"; ?>
+						<?php
+							$get_by_editor=true;
+							require "include/get_sites.php";
+						?>
 					</select>
 				</div>
 				<label class="col-md-1 control-label">开始时间</label>

@@ -9,22 +9,23 @@ CREATE DATABASE IF NOT EXISTS `SiteManager` DEFAULT CHARACTER SET utf8 COLLATE u
 USE `SiteManager`;
 
 CREATE TABLE IF NOT EXISTS `activities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `activity_name` varchar(255) NOT NULL,
-  `site_id` int(11) NOT NULL,
-  `author_id` int(11) NOT NULL,
+  `site_id` int(11) UNSIGNED NOT NULL,
+  `author_id` int(11) UNSIGNED NOT NULL,
   `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `end_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `activity_describe` text,
-  `activity_note` text,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `author_id` (`author_id`),
+  KEY `site_id` (`site_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `sites` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `site_name` varchar(255) NOT NULL,
   `site_describe` text,
-  `site_device` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`site_name`),
   KEY `name_2` (`site_name`),
@@ -32,16 +33,19 @@ CREATE TABLE IF NOT EXISTS `sites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `user-activity` (
-  `user_id` int(11) NOT NULL,
-  `activity_id` int(11) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `activity_id` int(11) UNSIGNED NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY `activity_id` (`activity_id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `userinfo` (
-  `id` int(11) NOT NULL,
-  `name` char(32) NOT NULL,
-  `telephone` char(11) NOT NULL,
-  `qq` char(12) NOT NULL
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` char(32) DEFAULT NULL,
+  `telephone` char(16) DEFAULT NULL,
+  `qq` char(16) DEFAULT NULL,
+  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `users` (

@@ -20,14 +20,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
-				<h1 class="page-header">场地:test</h1>
+				<h1 class="page-header">场地:<?=$assoc['site_name'] ?></h1>
 			</div>
-			<div class="col-md-2 page-header"></div>
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">详细介绍</div>
 			<div class="panel-body">
-				<p>test</p>
+				<p><?php echo $Parsedown->text($assoc["site_describe"]); ?></p>
 			</div>
 		</div>
     </div>
