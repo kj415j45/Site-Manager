@@ -1,3 +1,3 @@
-<div class="row hidden" id="admin_global_setting">
+<div class="container hidden" id="admin_global_setting">
 	
 </div>

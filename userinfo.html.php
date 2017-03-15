@@ -34,12 +34,19 @@
 										<span class="glyphicon glyphicon-pencil"></span> 
 									</a>
 								</div>
+								<small>
+								（莫寿田）
+								</small>
 							</h4>
+							电话: 12345678910
+							<br />
+							QQ: 12345678910
 						</div>
 					</div>
 				</div>
             </div>
 			<div class="col-sm-8">
+				<h2>参与的活动</h2>
 			    <table class="table table-condensed table-striped">
                     <tbody>
                         <tr>
@@ -58,7 +65,7 @@
     </div>
     <!-- 主容器结束 -->
     <!-- 底部开始 -->
-    <?php require "include/footer.html.php" ?>
+	<?php require "include/footer.html.php" ?>
     <!-- 底部结束 -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
