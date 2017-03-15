@@ -20,7 +20,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
-				<h1 class="page-header">场地:<?=$assoc['site_name'] ?></h1>
+				<h1 class="page-header">场地:<?=$assoc['site_name'] ?>
+				<?php
+		            if($_SESSION["usergroup"]=="管理员"){
+		                echo '<div class="pull-right">';
+			            echo '<a class="btn btn-primary" href="edit_site.php?id='.$_GET["id"].'">编辑</a>';
+			            echo '</div>';
+		            }
+		        ?>
+				</h1>
 			</div>
 		</div>
 		<div class="panel panel-default">
