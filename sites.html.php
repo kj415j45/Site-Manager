@@ -19,24 +19,7 @@
 	<!-- 主容器开始 -->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">场地1</div>
-					<div class="panel-body">Panel content</div>
-				</div>
-            </div>
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">场地1</div>
-					<div class="panel-body">Panel content</div>
-				</div>
-            </div>
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">场地1</div>
-					<div class="panel-body">Panel content</div>
-				</div>
-            </div>
+            <?php require "include/get_sites.php"; ?>
         </div>
     </div>
     <!-- 主容器结束 -->
