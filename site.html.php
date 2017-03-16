@@ -35,6 +35,15 @@
 				<p><?php echo $Parsedown->text($assoc["site_describe"]); ?></p>
 			</div>
 		</div>
+    <div class="panel panel-default">
+			<div class="panel-heading">最近的5场活动</div>
+			<div class="panel-body">
+				<?php
+          $get_site_activity=$_GET["id"];
+          require "include/get_activity.php"; 
+        ?>
+			</div>
+		</div>
     </div>
     <!-- 主容器结束 -->
     <!-- 底部开始 -->
