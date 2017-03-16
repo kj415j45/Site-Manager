@@ -30,3 +30,13 @@ function getActivityByID($id){
 function deleteActivity($id){
 	SQL::DELETE("activities","activities.id = '".$id."'");
 }
+
+function deleteSite($id){
+	SQL::DELETE("sites","sites.id = '".$id."'");
+	SQL::DELETE("activities","site_id = '".$id."'");
+}
+
+function deleteUser($id){
+	SQL::DELETE("users","users.id = '".$id."'");
+	SQL::DELETE("activities","activities.author_id = '".$id."'");
+}

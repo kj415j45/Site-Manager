@@ -21,14 +21,16 @@
         <div class="row">
             <div class="col-xs-12">
 					<h1 class="page-header">活动列表
-						<small>
-						<div class="pull-right">
-						<a class="btn btn-primary " href="edit_activity.php" role="button">
-							<span class="glyphicon glyphicon-plus"></span> 
-							<span class="hidden-xs">新建活动</span>
-						</a>
-						</div>
-						</small>
+                        <?php if(isset($_SESSION["username"])){?>
+                            <small>
+                            <div class="pull-right">
+                            <a class="btn btn-primary " href="edit_activity.php" role="button">
+                                <span class="glyphicon glyphicon-plus"></span> 
+                                <span class="hidden-xs">新建活动</span>
+                            </a>
+                            </div>
+                            </small>
+                        <?php }?>
 					</h1>
                     <table class="table table-condensed table-striped">
                         <tbody>

@@ -153,6 +153,29 @@
 			echo '<td class="hidden-xs">'.$assoc["$i"]['start_time']."</td>";
 			echo "</tr>";
 		}
+	}else if(isset($get_site_activity)){
+		$now=date("YmdHis",time()-259200);
+		SQL::SELECT("start_time,end_time,activity_name,id",
+					"activities",
+					"site_id='{$get_site_activity}' AND start_time<'{$now}'+'00000003000000' AND end_time>'{$now}'-'00000003000000'",
+					"LIMIT 5");
+		while($row=SQL::getResult()->fetch_assoc()){
+            $assoc[]=$row;
+        }
+		$activities_count=count($assoc);
+		for($i=$activities_count-1;$i>=0;$i--){
+			$start_time=strtotime($assoc[$i]["start_time"]);
+			$end_time=strtotime($assoc[$i]["end_time"]);
+			$now=time();
+			echo "<a href='activity.php?id={$assoc[$i]['id']}'>{$assoc[$i]['id']}.{$assoc[$i]['activity_name']}</a>";
+			if($now<$start_time){
+				echo '<span class="label label-warning">即将开始</span>';
+			}else if($now>$end_time){
+				echo '<span class="label label-default">已结束</span>';
+			}else{
+				echo '<span class="label label-success">正在进行</span>';
+			}
+		}
 	}else{
 		page_jump($site_host."activities.php",0);
 	}

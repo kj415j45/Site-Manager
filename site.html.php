@@ -19,14 +19,29 @@
 	<!-- 主容器开始 -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10">
-				<h1 class="page-header">场地:<?=$assoc['site_name'] ?></h1>
-			</div>
+				<h1 class="page-header">场地:<?=$assoc['site_name'] ?>
+				<?php
+		            if($_SESSION["usergroup"]=="管理员"){
+		                echo '<div class="pull-right">';
+			            echo '<a class="btn btn-primary" href="edit_site.php?id='.$_GET["id"].'">编辑</a>';
+			            echo '</div>';
+		            }
+		        ?>
+				</h1>
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">详细介绍</div>
 			<div class="panel-body">
 				<p><?php echo $Parsedown->text($assoc["site_describe"]); ?></p>
+			</div>
+		</div>
+    <div class="panel panel-default">
+			<div class="panel-heading">最近的5场活动</div>
+			<div class="panel-body">
+				<?php
+          $get_site_activity=$_GET["id"];
+          require "include/get_activity.php"; 
+        ?>
 			</div>
 		</div>
     </div>

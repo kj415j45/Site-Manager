@@ -1,7 +1,16 @@
 <div class="container" id="admin_activities">
 	<div class="row">
 		<div class="col-md-12">
-			<h1 class="page-header">活动管理</h1>
+			<h1 class="page-header">活动管理
+			                            <small>
+                            <div class="pull-right">
+                            <a class="btn btn-primary " href="edit_activity.php" role="button">
+                                <span class="glyphicon glyphicon-plus"></span> 
+                                <span class="hidden-xs">新建活动</span>
+                            </a>
+                            </div>
+                            </small>
+			</h1>
                 <table class="table table-condensed table-striped table-hover">
                     <tbody>
                         <tr>
@@ -40,7 +49,7 @@
 								echo '<td class="hidden-xs">'.$assoc["$i"]['start_time']."</td>";
 								echo '<td><big>';
 								echo '<a href="edit_activity.php?id='.$assoc["$i"]['id'].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" title="编辑"></span></a>';
-								echo ' <a class="text-danger" href="admin.php?delete_activity&id='.$assoc["$i"]['id'].'"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="删除"></span></a>';
+								echo ' <a class="text-danger" onClick="deleteActivity('.$assoc["$i"]['id'].','.$assoc["$i"]['activity_name'].');"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="删除"></span></a>';
 								echo '</big></td>';
 								echo "</tr>";
 							}
@@ -50,3 +59,10 @@
 		</div>
 	</div>
 </div>
+<script>
+	function deleteActivity(id,name){
+		if(confirm("你确认要删除活动: "+name+" ("+id+") 吗?")){
+			window.location.href="admin.php?delete_activity&id="+id;
+		}
+	}
+</script>
