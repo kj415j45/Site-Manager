@@ -18,17 +18,19 @@
                         <td>场地名称</td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td class="hidden-xs">1</td>
-                        <td>滑天下之大稽</td>
-                        <td>	<big>
-								<a><span class="glyphicon glyphicon-pencil" aria-hidden="true" title="编辑"></span></a>
-								<a class="text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="删除"></span></a>
-								</big>
-                        </td>
-                    </tr>
+                    <?php
+                        $get_by_admin=true;
+                        require_once 'get_sites.php';
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<script>
+	function deleteSite(id,name){
+		if(confirm("你确认要删除场地: "+name+" ("+id+") 和它的所有活动吗?")){
+			window.location.href="admin.php?delete_site&id="+id;
+		}
+	}
+</script>

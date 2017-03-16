@@ -19,7 +19,7 @@
 	<!-- 主容器开始 -->
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-xs-12 col-sm-4">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="col-md-4 col-xs-6">
@@ -45,7 +45,7 @@
 					</div>
 				</div>
             </div>
-			<div class="col-sm-8">
+			<div class="col-xs-12 col-sm-8">
 				<h2>参与的活动</h2>
 			    <table class="table table-condensed table-striped">
                     <tbody>

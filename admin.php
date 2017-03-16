@@ -6,6 +6,12 @@
 		if(isset($_GET['delete_activity'])){
 			deleteActivity($_GET['id']);
 			page_jump("admin.php?ui=activities",0);
+		}else if(isset($_GET['delete_site'])){
+			deleteSite($_GET['id']);
+			page_jump("admin.php?ui=sites",0);
+		}else if(isset($_GET['delete_user'])){
+			deleteUser($_GET['id']);
+			page_jump("admin.php?ui=users",0);
 		}else{
 			require "admin.html.php";
 		}
