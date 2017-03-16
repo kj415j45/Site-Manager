@@ -19,7 +19,6 @@
 	<!-- 主容器开始 -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10">
 				<h1 class="page-header">场地:<?=$assoc['site_name'] ?>
 				<?php
 		            if($_SESSION["usergroup"]=="管理员"){
@@ -29,7 +28,6 @@
 		            }
 		        ?>
 				</h1>
-			</div>
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">详细介绍</div>
