@@ -33,7 +33,8 @@
                     <textarea class="col-md-6 form-control" name="site_describe" rows="10"><?=$site_describe ?></textarea>
                 </div>
             </div>
-			<div class="form-group">
+			<!--惨遭废弃的表单项
+                <div class="form-group">
 				<label class="col-md-1 control-label">场地设备</label>
 				<div class="col-md-11">
 					<div class="checkbox">
@@ -54,7 +55,7 @@
 				<div class="col-md-11">
 					<input type="text" class="form-control" name="other_devices" placeholder="其他设备,使用空格分割">
 				</div>
-			</div>
+			</div>-->
             <div class="form-group">
                 <div class="col-md-offset-11 col-md-1">
                     <button type="submit" class="btn btn-primary col-md-12">提交</button>
