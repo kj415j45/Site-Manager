@@ -59,8 +59,9 @@
 							$get_user_join_activities=$_GET['user'];
 							require "include/get_activity.php";
 						?>
-                </tbody>
-			</div>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- 主容器结束 -->
