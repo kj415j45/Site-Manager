@@ -154,7 +154,7 @@
 			echo "</tr>";
 		}
 	}else if(isset($get_site_activity)){
-		$now=date("YmdHis",time()-259200);
+		$now=date("YmdHis",time());
 		SQL::SELECT("start_time,end_time,activity_name,id",
 					"activities",
 					"site_id='{$get_site_activity}' AND start_time<'{$now}'+'00000003000000' AND end_time>'{$now}'-'00000003000000'",
