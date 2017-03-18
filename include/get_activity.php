@@ -40,7 +40,7 @@
 		echo '</small>';
 		echo '</h1>';
 		echo '<ul class="list-inline">';
-		echo '<li><big><span class="label label-info">发起人:'.$assoc["username"].'</span></big></li>';
+		echo '<li><big><a href="userinfo.php?user='.$assoc["username"].'"><span class="label label-info">发起人:'.$assoc["username"].'</span></a></big></li>';
 		echo '<li><big><span class="label label-warning">开始时间:'.$assoc["start_time"].'</span></big></li>';
 		echo '<li><big><span class="label label-success">结束时间:'.$assoc["end_time"].'</span></big></li>';
 		echo '<li><big><a href="site.php?id='.$assoc["id"].'"><span class="label label-info">活动场地:'.$assoc["site_name"].'</span></a></big></li>';
