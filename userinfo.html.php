@@ -35,12 +35,12 @@
 									</a>
 								</div>
 								<small>
-								（莫寿田）
+								（<?=$assoc['name'] ?>）
 								</small>
 							</h4>
-							电话: 12345678910
+							电话: <?=$assoc['telephone'] ?>
 							<br />
-							QQ: 12345678910
+							QQ: <?=$assoc['qq'] ?>
 						</div>
 					</div>
 				</div>
@@ -59,8 +59,9 @@
 							$get_user_join_activities=$_GET['user'];
 							require "include/get_activity.php";
 						?>
-                </tbody>
-			</div>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- 主容器结束 -->

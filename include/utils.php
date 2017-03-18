@@ -36,6 +36,14 @@ function deleteSite($id){
 	SQL::DELETE("activities","site_id = '".$id."'");
 }
 
+function getUsers(){
+	SQL::query("SELECT * FROM users");
+	while($row=SQL::getResult()->fetch_assoc()){    
+		$assoc[]=$row;
+	}
+	return $assoc;
+}
+
 function deleteUser($id){
 	SQL::DELETE("users","users.id = '".$id."'");
 	SQL::DELETE("activities","activities.author_id = '".$id."'");
