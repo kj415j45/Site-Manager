@@ -5,6 +5,6 @@
 
     SQL::SELECT("name,qq,telephone",
                 "userinfo,users",
-                "username='$_GET['user']' AND users.id=userinfo.id");
+                "username='{$_GET['user']}' AND users.id=userinfo.id");
     $assoc=SQL::getAssoc(SQL::getResult());
     require "userinfo.html.php";
