@@ -14,7 +14,7 @@
 	}
 	SQL::SELECT("*",
 				"userinfo",
-				"id='{$_SESSION['user_id']}'");
+				"id='{$_GET['user_id']}'");
 	$assoc=SQL::getAssoc(SQL::getResult());
 	$name=$assoc['name'];
 	$telephone=$assoc['telephone'];
