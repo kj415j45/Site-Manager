@@ -30,17 +30,25 @@
 						<div class="col-md-8 col-xs-6">
 							<h4><?=$_GET['user'] ?>
 								<div class="pull-right">
-									<a href="edit_userinfo.php?user=<?=$_GET['user'] ?>" role="button">
-										<span class="glyphicon glyphicon-pencil"></span> 
-									</a>
+									<?php if($_SESSION["username"]==$_GET["user"]||$_SESSION["usergroup"]=="管理员"){?>
+                                        <a href="edit_userinfo.php?user=<?=$_GET['user'] ?>" role="button">
+                                            <span class="glyphicon glyphicon-pencil"></span> 
+                                        </a>
+                                    <?php }?>
 								</div>
 								<small>
-								（<?=$assoc['name'] ?>）
+								    <?php if(strlen($assoc['name'])>0){?>
+                                    <?='('.$assoc['name'].')' ?>
+                                    <?php }?>
 								</small>
 							</h4>
-							电话: <?=$assoc['telephone'] ?>
+                                <?php if(strlen($assoc['telephone'])>0){?>
+                                <?='电话: '.$assoc['telephone'] ?>
+                                <?php }?>
 							<br />
-							QQ: <?=$assoc['qq'] ?>
+                                <?php if(strlen($assoc['qq'])>0){?>
+                                <?='QQ: '.$assoc['qq'] ?>
+                                <?php }?>
 						</div>
 					</div>
 				</div>

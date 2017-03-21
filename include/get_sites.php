@@ -24,9 +24,9 @@
 			echo '<tr>';
             echo '<td class="hidden-xs">'.$assoc[$i]['id'].'</td>';
             echo '<td><a href="site.php?id='.$assoc[$i]['id'].'">'.$assoc[$i]['site_name'].'</a></td>';
-            echo '<td>	<big>';
+            echo '<td><big>';
 			echo '<a href="edit_site.php?id='.$assoc[$i]['id'].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" title="编辑"></span></a>';
-			echo ' <a class="text-danger" onClick="deleteSite('.$assoc[$i]['id'].','.$assoc[$i]['site_name'].');"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="删除"></span></a>';
+			echo '<a class="text-danger" onClick="deleteSite(\''.$assoc[$i]['id'].'\',\''.$assoc[$i]['site_name'].'\');"><span class="glyphicon glyphicon-remove" aria-hidden="true" title="删除"></span></a>';
 			echo '</big></td></tr>';
 		}
 	}else{
