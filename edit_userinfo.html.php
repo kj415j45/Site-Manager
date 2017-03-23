@@ -22,27 +22,27 @@
 			<h1 class="page-header">编辑个人信息</h1>
 			<form class="form-horizontal" method="post" action="<?=$site_host ?>edit_userinfo.php">
 			  <div class="form-group">
-				<label class="col-md-2 control-label">真实姓名</label>
-				<div class="col-md-9">
+				<label class="col-md-1 control-label text-left">真实姓名</label>
+				<div class="col-md-11">
 				  <input type="text" class="form-control" name="name" placeholder="你的名字" value="<?=$name ?>">
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-md-2 control-label">电话号码</label>
-				<div class="col-md-9">
+				<label class="col-md-1 control-label text-left">电话号码</label>
+				<div class="col-md-11">
 				  <input type="text" class="form-control" name="telephone" placeholder="电话(不能超过11位)" value="<?=$telephone ?>">
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label class="col-md-2 control-label">QQ号码</label>
-				<div class="col-md-9">
+				<label class="col-md-1 control-label text-left">QQ号码</label>
+				<div class="col-md-11">
 				  <input type="text" class="form-control" name="qq" placeholder="QQ" value="<?=$qq ?>">
 				</div>
 			  </div>
 			  
 			  <div class="form-group">
-				<div class="col-md-offset-10 col-md-1">
-				  <button type="submit" class="btn btn-primary col-md-12">提交</button>
+				<div class="col-md-offset-11 col-md-1">
+				  <button type="submit" class="btn btn-primary">提交</button>
 				 </div>
 			  </div>
 			  <input type="hidden" name="activity_id" value="<?=$_GET["id"] ?>">
