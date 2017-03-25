@@ -17,38 +17,61 @@
     <?php require "include/header.html.php"; ?>
 	<!-- 头部结束 -->
 	<!-- 主容器开始 -->
-    <div class="container">
-        <div class="row">
-			<h1 class="page-header">编辑个人信息</h1>
-			<form class="form-horizontal" method="post" action="<?=$site_host ?>edit_userinfo.php">
-			  <div class="form-group">
-				<label class="col-md-1 control-label text-left">真实姓名</label>
-				<div class="col-md-11">
-				  <input type="text" class="form-control" name="name" placeholder="你的名字" value="<?=$name ?>">
-				</div>
-			  </div>
-			  <div class="form-group">
-				<label class="col-md-1 control-label text-left">电话号码</label>
-				<div class="col-md-11">
-				  <input type="text" class="form-control" name="telephone" placeholder="电话(不能超过11位)" value="<?=$telephone ?>">
-				</div>
-			  </div>
-			  <div class="form-group">
-				<label class="col-md-1 control-label text-left">QQ号码</label>
-				<div class="col-md-11">
-				  <input type="text" class="form-control" name="qq" placeholder="QQ" value="<?=$qq ?>">
-				</div>
-			  </div>
-			  
-			  <div class="form-group">
-				<div class="col-md-offset-11 col-md-1">
-				  <button type="submit" class="btn btn-primary">提交</button>
-				 </div>
-			  </div>
-			  <input type="hidden" name="activity_id" value="<?=$_GET["id"] ?>">
-			</form>
-        </div>
-    </div>
+  <div class="container">
+      <ul class="nav nav-pills">
+          <li role="presentation" class="editb" id="b_person"><a onClick="show('person');">个人信息</a>
+          </li>
+          <li role="presentation" class="editb" id="b_head"><a onClick="show('head');">修改头像</a>
+          </li>
+          <li role="presentation" class="editb" id="b_password"><a onClick="show('password');">修改密码</a>
+          </li>
+      </ul>
+      <div class="row edit" id="e_person">
+          <h1 class="page-header">编辑个人信息</h1>
+          <form class="form-horizontal" method="post" action="<?=$site_host ?>edit_userinfo.php">
+              <div class="form-group">
+                  <label class="col-md-1 control-label text-left">真实姓名</label>
+                  <div class="col-md-11">
+                      <input type="text" class="form-control" name="name" placeholder="你的名字" value="<?=$name ?>">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-1 control-label text-left">电话号码</label>
+                  <div class="col-md-11">
+                      <input type="text" class="form-control" name="telephone" placeholder="电话(不能超过11位)" value="<?=$telephone ?>">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-1 control-label text-left">QQ号码</label>
+                  <div class="col-md-11">
+                      <input type="text" class="form-control" name="qq" placeholder="QQ" value="<?=$qq ?>">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-md-offset-11 col-md-1">
+                      <button type="submit" class="btn btn-primary">提交</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+      <div class="row edit" id="e_head">
+          <h1 class="page-header">上传头像</h1>
+          <form class="form-horizontal" method="post" action="<?=$site_host ?>userhead/userhead_upload.php" enctype="multipart/form-data">
+              <div class="form-group">
+                  <input type="file" class="form-control" name="file" accept="image/gif,image/png,image/jpeg">
+                  <label>头像仅可使用png,jpg,jpeg,gif格式,最大大小为2M</label>
+              </div>
+              <div class="form-group">
+                  <div class="col-md-offset-11 col-md-1">
+                      <button type="submit" class="btn btn-primary">提交</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+      <div class="row edit" id="e_password">
+          <h1 class="page-header">修改密码</h1>
+      </div>
+  </div>
     <!-- 主容器结束 -->
     <!-- 底部开始 -->
     <?php require "include/footer.html.php" ?>
@@ -64,5 +87,15 @@
     <script src="js/jquery.min.js"></script>
     <!-- 导入Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      function show(page){
+        $(".edit").addClass("hidden");
+        $(".editb").removeClass("active");
+        $("#e_"+page).removeClass("hidden");
+        $("#b_"+page).addClass("active");
+      }
+      show("person");
+    </script>
   </body>
 </html>

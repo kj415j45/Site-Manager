@@ -1,18 +1,22 @@
 <?php
-    //TODO ÐèÒª²âÊÔ±¾Ä£¿é
-    require_once __DIR__."/../sql_connect.php"
-    if ((($_FILES["file"]["type"] == "image/gif")//ÊÇgif
-      || ($_FILES["file"]["type"] == "image/jpeg")//»òÕßÊÇjpg
-      || ($_FILES["file"]["type"] == "image/png"))//»òÕßÊÇpng
-      && ($_FILES["file"]["size"] < 2000000)){//²¢ÇÒÐ¡ÓÚ2M
-        if ($_FILES["file"]["error"] > 0){//Èç¹ûÃ»ÓÐ´íÎó
-            echo "Í·ÏñÉÏ´«Ê§°Ü";
+    session_start();
+    require_once __DIR__."/../include/sql_connect.php";
+    require_once __DIR__."/../include/public_function.php";
+    if ((($_FILES["file"]["type"] == "image/gif")//æ˜¯gif
+      || ($_FILES["file"]["type"] == "image/jpeg")//æˆ–è€…æ˜¯jpg
+      || ($_FILES["file"]["type"] == "image/png"))//æˆ–è€…æ˜¯png
+      && ($_FILES["file"]["size"] < 2000000)){//å¹¶ä¸”å°äºŽ2M
+        if ($_FILES["file"]["error"] > 0){//å¦‚æžœæ²¡æœ‰é”™è¯¯
+            echo "å¤´åƒä¸Šä¼ å¤±è´¥";
         }else{
-            echo "Í·ÏñÉÏ´«³É¹¦"£»
+            echo "å¤´åƒä¸Šä¼ æˆåŠŸ";
         }
     }
     else{
-        echo "ÉÏ´«µÄ²»ÊÇÍ¼Æ¬ÎÄ¼þ";
+        echo "ä¸Šä¼ çš„ä¸æ˜¯å›¾ç‰‡æ–‡ä»¶";
     }
-    move_uploaded_file($_FILES["file"]["tmp_name"],__DIR__."/".$_SESSION["username"]);//±£´æÍ·Ïñ
+    unlink(__DIR__."/".$_SESSION["username"]);
+    move_uploaded_file($_FILES["file"]["tmp_name"],__DIR__."/".$_SESSION["username"]);//ä¿å­˜å¤´åƒ
+    page_jump($site_host."userinfo.php?user=".$_SESSION["username"],0);
+    unset($_FILES["file"]);
 ?>
