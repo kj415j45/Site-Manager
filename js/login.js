@@ -35,7 +35,7 @@ function username_check(){
 	}
 	xmlhttp.open("GET","regist.php?check_username="+$("#username").val(),true);
 	xmlhttp.send();
-}
+};
 function password_check(){
 	$("#u_p").removeClass("has-success");
 	$("#u_p").removeClass("has-error");
@@ -61,7 +61,7 @@ function password_check(){
 	}
 	$("#u_p").addClass("has-success");
 	$("#u_p_c").val("true");
-}
+};
 function confirm_password_check(){
 	if($("#u_p_c").val()=="false"){
 		$("#c_u_p").addClass("has-error");
@@ -79,14 +79,14 @@ function confirm_password_check(){
 	}
 	$("#c_u_p").addClass("has-success");
 	$("#c_u_p_c").val("true");
-}
+};
 function login(){
 	$("#notice").empty();
 	$("#notice").append('<div class="alert alert-info text-center" role="alert">登录中...</div>');
 	document.getElementById("md5password").value=hex_md5(document.getElementById("password").value);
 	document.getElementById("password").disabled=true;
 	document.login_form.submit();
-}
+};
 function regist(){
 	$("#notice").empty();
 	$("#notice").append('<div class="alert alert-info text-center" role="alert">注册中...</div>');
@@ -95,4 +95,4 @@ function regist(){
 		document.getElementById("password").disabled=true;
 		document.login_form.submit();
 	}
-}
+};
