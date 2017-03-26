@@ -1,0 +1,8 @@
+<?php
+$sql_host="";//mysql数据库地址
+$sql_username="";//mysql用户名
+$sql_password="";//mysql密码
+$site_host="";//网站域名(结尾带'/')
+$site_name="";//网站标题
+$site_head="";//顶部横幅
+$site_foot="";//底部信息
